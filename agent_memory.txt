@@ -1,0 +1,5249 @@
+
+[2026-02-25 17:24:16.536636]
+TASK:
+Analyze AAPL, calculate volatility, Sharpe ratio, plot trends
+CODE:
+FILE: requirements.txt
+yfinance
+pandas
+numpy
+scipy
+matplotlib
+
+FILE: analyze_aapl.py
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Download AAPL data
+aapl = yf.download('AAPL', start='2020-01-01', end='2023-01-01')
+
+# Calculate daily returns
+aapl['Daily Return'] = aapl['Adj Close'].pct_change()
+
+# Calculate volatility (annualized)
+volatility = aapl['Daily Return'].std() * np.sqrt(252)
+
+# Calculate Sharpe Ratio (assuming risk-free rate = 0)
+sharpe_ratio = aapl['Daily Return'].mean() / aapl['Daily Return'].std() * np.sqrt(252)
+
+# Plot trends
+plt.figure(figsize=(14, 7))
+plt.plot(aapl['Adj Close'], label='AAPL Adjusted Close Price')
+plt.title('AAPL Stock Price Trend')
+plt.xlabel('Date')
+plt.ylabel('Price')
+plt.legend()
+plt.show()
+
+# Print results
+print(f"Volatility: {volatility:.4f}")
+print(f"Sharpe Ratio: {sharpe_ratio:.4f}")
+
+[2026-02-25 17:24:16.552199]
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1, in <module>
+    FILE: requirements.txt
+          ^^^^^^^^^^^^
+NameError: name 'requirements' is not defined
+
+
+[2026-02-25 17:24:31.539645]
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1, in <module>
+    FILE: requirements.txt
+          ^^^^^^^^^^^^
+NameError: name 'requirements' is not defined
+
+
+[2026-02-25 17:24:53.112025]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    The error occurs because the code is being executed as a single Python script, but it contains both the `requirements.txt` file content and the Python code. To fix this, we need to separate the requirements and the Python code into different files. Here's the corrected Python code:
+                                                                                                                                                                                                                                                                 ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+
+[2026-02-25 17:25:05.197699]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    ```python
+    ^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:25:18.504379]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    ```python
+    ^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:25:34.484246]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    ```python
+    ^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:26:51.404030]
+TASK:
+Analyze AAPL, calculate volatility, Sharpe ratio, plot trends
+CODE:
+FILE: requirements.txt
+yfinance
+pandas
+numpy
+scipy
+matplotlib
+
+FILE: analyze.py
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+def calculate_volatility(daily_returns):
+    return daily_returns.std() * np.sqrt(252)
+
+def calculate_sharpe_ratio(daily_returns):
+    return (daily_returns.mean() / daily_returns.std()) * np.sqrt(252)
+
+def download_and_analyze_data(ticker):
+    data = yf.download(ticker, start='2020-01-01', end='2023-01-01')
+    data['Daily Return'] = data['Adj Close'].pct_change()
+    return data
+
+def plot_price_trend(data, ticker):
+    plt.figure(figsize=(14, 7))
+    plt.plot(data['Adj Close'], label=f'{ticker} Price')
+    plt.title(f'{ticker} Stock Price Trend')
+    plt.xlabel('Date')
+    plt.ylabel('Price')
+    plt.legend()
+    plt.show()
+
+def print_metrics(volatility, sharpe_ratio, ticker):
+    print(f"\n{ticker} Metrics:")
+    print(f"Annualized Volatility: {volatility:.4f}")
+    print(f"Sharpe Ratio: {sharpe_ratio:.4f}")
+
+def analyze_stock(ticker='AAPL'):
+    data = download_and_analyze_data(ticker)
+    volatility = calculate_volatility(data['Daily Return'].dropna())
+    sharpe_ratio = calculate_sharpe_ratio(data['Daily Return'].dropna())
+    print_metrics(volatility, sharpe_ratio, ticker)
+    plot_price_trend(data, ticker)
+    return {'volatility': volatility, 'sharpe_ratio': sharpe_ratio}
+
+if __name__ == '__main__':
+    analyze_stock()
+
+[2026-02-25 17:26:51.421216]
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1, in <module>
+    FILE: requirements.txt
+          ^^^^^^^^^^^^
+NameError: name 'requirements' is not defined
+
+
+[2026-02-25 17:27:02.918667]
+
+[*********************100%***********************]  1 of 1 completed
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 40, in <module>
+    analyze_stock()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 32, in analyze_stock
+    data = download_and_analyze_data(ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 14, in download_and_analyze_data
+    data['Daily Return'] = data['Adj Close'].pct_change()
+                           ~~~~^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/frame.py", line 4377, in __getitem__
+    return self._getitem_multilevel(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/frame.py", line 4435, in _getitem_multilevel
+    loc = self.columns.get_loc(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/multi.py", line 3523, in get_loc
+    loc = self._get_level_indexer(key, level=0)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/multi.py", line 3885, in _get_level_indexer
+    idx = self._get_loc_single_level_index(level_index, key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/multi.py", line 3458, in _get_loc_single_level_index
+    return level_index.get_loc(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+
+
+[2026-02-25 17:27:35.342884]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    The error occurs because the column name 'Adj Close' is not found in the downloaded data. This could be due to changes in the yfinance library or the data structure returned by Yahoo Finance. Let's modify the code to use the correct column name and add error handling.
+                                                                                                                                                                                                       ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+
+[2026-02-25 17:27:55.566585]
+
+AAPL Metrics:
+Annualized Volatility: 0.3693
+Sharpe Ratio: 0.6986
+
+[*********************100%***********************]  1 of 1 completed
+
+
+[2026-02-25 17:31:54.261618]
+TASK:
+Find best performing NASDAQ stocks in last 12 months and optimize portfolio using Sharpe ratio
+CODE:
+FILE: requirements.txt
+yfinance
+pandas
+numpy
+scipy
+matplotlib
+requests
+beautifulsoup4
+
+FILE: nasdaq_optimizer.py
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import requests
+from bs4 import BeautifulSoup
+from scipy.optimize import minimize
+
+def get_nasdaq_tickers():
+    url = 'https://en.wikipedia.org/wiki/Nasdaq-100'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    table = soup.find('table', {'id': 'constituents'})
+    tickers = []
+    for row in table.findAll('tr')[1:]:
+        ticker = row.findAll('td')[1].text.strip()
+        tickers.append(ticker)
+    return tickers
+
+def download_stock_data(tickers):
+    data = yf.download(tickers, start=pd.Timestamp.now() - pd.DateOffset(years=1), end=pd.Timestamp.now())['Adj Close']
+    return data
+
+def calculate_returns(data):
+    returns = data.pct_change().dropna()
+    annual_returns = returns.mean() * 252
+    annual_volatility = returns.std() * np.sqrt(252)
+    sharpe_ratios = annual_returns / annual_volatility
+    return returns, annual_returns, annual_volatility, sharpe_ratios
+
+def find_top_performers(sharpe_ratios, n=20):
+    top_performers = sharpe_ratios.sort_values(ascending=False).head(n)
+    return top_performers.index.tolist()
+
+def optimize_portfolio(returns, tickers):
+    cov_matrix = returns.cov()
+    
+    def portfolio_stats(weights):
+        port_return = np.sum(returns.mean() * weights) * 252
+        port_volatility = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights))) * np.sqrt(252)
+        sharpe = port_return / port_volatility
+        return -sharpe
+    
+    num_assets = len(tickers)
+    args = (returns,)
+    constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+    bounds = tuple((0,1) for asset in range(num_assets))
+    initial_weights = np.array(num_assets * [1./num_assets])
+    
+    optimized = minimize(portfolio_stats, initial_weights, method='SLSQP', 
+                         bounds=bounds, constraints=constraints)
+    return optimized.x
+
+def plot_performance(portfolio, optimized_weights, tickers):
+    plt.figure(figsize=(14,7))
+    portfolio['Adj Close'].plot(label='Portfolio Performance', linewidth=2)
+    portfolio['Optimized Portfolio'] = np.sum(portfolio[tickers] * optimized_weights, axis=1)
+    portfolio['Optimized Portfolio'].plot(label='Optimized Portfolio', linewidth=2)
+    plt.title('Portfolio Performance vs Optimized Portfolio')
+    plt.xlabel('Date')
+    plt.ylabel('Normalized Price')
+    plt.legend()
+    plt.show()
+
+def analyze_portfolio():
+    tickers = get_nasdaq_tickers()
+    stock_data = download_stock_data(tickers)
+    returns, annual_returns, annual_volatility, sharpe_ratios = calculate_returns(stock_data)
+    
+    top_tickers = find_top_performers(sharpe_ratios)
+    top_data = stock_data[top_tickers]
+    top_returns = returns[top_tickers]
+    
+    optimized_weights = optimize_portfolio(top_returns, top_tickers)
+    weights_df = pd.DataFrame({'Ticker': top_tickers, 'Weight': optimized_weights})
+    weights_df = weights_df.sort_values(by='Weight', ascending=False)
+    
+    initial_port = top_data.iloc[0].values
+    portfolio = top_data.div(initial_port).mul(100)
+    
+    print("\nTop Performers based on Sharpe Ratio:")
+    print(sharpe_ratios[top_tickers].sort_values(ascending=False))
+    print("\nOptimized Portfolio Weights:")
+    print(weights_df)
+    
+    plot_performance(portfolio, optimized_weights, top_tickers)
+    
+    return weights_df
+
+if __name__ == '__main__':
+    analyze_portfolio()
+
+[2026-02-25 17:31:54.278125]
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1, in <module>
+    FILE: requirements.txt
+          ^^^^^^^^^^^^
+NameError: name 'requirements' is not defined
+
+
+[2026-02-25 17:32:37.873526]
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1, in <module>
+    FILE: requirements.txt
+          ^^^^^^^^^^^^
+NameError: name 'requirements' is not defined
+
+
+[2026-02-25 17:33:38.438496]
+TASK:
+Find best performing NASDAQ stocks in last 12 months and optimize portfolio using Sharpe ratio
+CODE:
+import subprocess, sys
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+install("yfinance")
+install("pandas")
+install("numpy")
+install("scipy")
+install("matplotlib")
+install("requests")
+install("beautifulsoup4")
+
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import requests
+from bs4 import BeautifulSoup
+from scipy.optimize import minimize
+
+def get_nasdaq_tickers():
+    url = 'https://en.wikipedia.org/wiki/Nasdaq-100'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    table = soup.find('table', {'id': 'constituents'})
+    tickers = []
+    for row in table.findAll('tr')[1:]:
+        ticker = row.findAll('td')[1].text.strip()
+        tickers.append(ticker)
+    return tickers
+
+def download_stock_data(tickers):
+    data = yf.download(tickers, start=pd.Timestamp.now() - pd.DateOffset(years=1), end=pd.Timestamp.now())['Adj Close']
+    return data
+
+def calculate_returns(data):
+    returns = data.pct_change().dropna()
+    annual_returns = returns.mean() * 252
+    annual_volatility = returns.std() * np.sqrt(252)
+    sharpe_ratios = annual_returns / annual_volatility
+    return returns, annual_returns, annual_volatility, sharpe_ratios
+
+def find_top_performers(sharpe_ratios, n=20):
+    top_performers = sharpe_ratios.sort_values(ascending=False).head(n)
+    return top_performers.index.tolist()
+
+def optimize_portfolio(returns, tickers):
+    cov_matrix = returns.cov()
+    
+    def portfolio_stats(weights):
+        port_return = np.sum(returns.mean() * weights) * 252
+        port_volatility = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights))) * np.sqrt(252)
+        sharpe = port_return / port_volatility
+        return -sharpe
+    
+    num_assets = len(tickers)
+    args = (returns,)
+    constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+    bounds = tuple((0,1) for asset in range(num_assets))
+    initial_weights = np.array(num_assets * [1./num_assets])
+    
+    optimized = minimize(portfolio_stats, initial_weights, method='SLSQP', 
+                         bounds=bounds, constraints=constraints)
+    return optimized.x
+
+def plot_performance(portfolio, optimized_weights, tickers):
+    plt.figure(figsize=(14,7))
+    portfolio['Adj Close'].plot(label='Portfolio Performance', linewidth=2)
+    portfolio['Optimized Portfolio'] = np.sum(portfolio[tickers] * optimized_weights, axis=1)
+    portfolio['Optimized Portfolio'].plot(label='Optimized Portfolio', linewidth=2)
+    plt.title('Portfolio Performance vs Optimized Portfolio')
+    plt.xlabel('Date')
+    plt.ylabel('Normalized Price')
+    plt.legend()
+    plt.show()
+
+def analyze_portfolio():
+    tickers = get_nasdaq_tickers()
+    stock_data = download_stock_data(tickers)
+    returns, annual_returns, annual_volatility, sharpe_ratios = calculate_returns(stock_data)
+    
+    top_tickers = find_top_performers(sharpe_ratios)
+    top_data = stock_data[top_tickers]
+    top_returns = returns[top_tickers]
+    
+    optimized_weights = optimize_portfolio(top_returns, top_tickers)
+    weights_df = pd.DataFrame({'Ticker': top_tickers, 'Weight': optimized_weights})
+    weights_df = weights_df.sort_values(by='Weight', ascending=False)
+    
+    initial_port = top_data.iloc[0].values
+    portfolio = top_data.div(initial_port).mul(100)
+    
+    print("\nTop Performers based on Sharpe Ratio:")
+    print(sharpe_ratios[top_tickers].sort_values(ascending=False))
+    print("\nOptimized Portfolio Weights:")
+    print(weights_df)
+    
+    plot_performance(portfolio, optimized_weights, top_tickers)
+    
+    return weights_df
+
+if __name__ == '__main__':
+    analyze_portfolio()
+
+[2026-02-25 17:33:47.755466]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 107, in <module>
+    analyze_portfolio()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 82, in analyze_portfolio
+    tickers = get_nasdaq_tickers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 31, in get_nasdaq_tickers
+    for row in table.findAll('tr')[1:]:
+               ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'findAll'
+
+
+[2026-02-25 17:34:35.446221]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 107, in <module>
+    analyze_portfolio()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 82, in analyze_portfolio
+    tickers = get_nasdaq_tickers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 31, in get_nasdaq_tickers
+    for row in table.findAll('tr')[1:]:
+               ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'findAll'
+
+
+[2026-02-25 17:35:26.205418]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    The error occurs because the table with class 'wikitable' is not found on the Wikipedia page. Let's modify the code to correctly locate the Nasdaq-100 constituents table. Here's the corrected version:
+        ^^^^^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:36:18.706259]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 119, in <module>
+    analyze_portfolio()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 94, in analyze_portfolio
+    tickers = get_nasdaq_tickers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 37, in get_nasdaq_tickers
+    raise ValueError("Could not find Nasdaq-100 components table")
+ValueError: Could not find Nasdaq-100 components table
+
+
+[2026-02-25 17:37:10.927196]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 3
+    Here's the corrected code:
+        ^
+SyntaxError: unterminated string literal (detected at line 3)
+
+
+[2026-02-25 17:38:07.919096]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+
+[                       0%                       ]
+[*                      2%                       ]  2 of 100 completed
+[*                      3%                       ]  3 of 100 completed
+[**                     4%                       ]  4 of 100 completed
+[**                     5%                       ]  5 of 100 completed
+[***                    6%                       ]  6 of 100 completed
+[***                    7%                       ]  7 of 100 completed
+[****                   8%                       ]  8 of 100 completed
+[****                   9%                       ]  9 of 100 completed
+[*****                 10%                       ]  10 of 100 completed
+[*****                 11%                       ]  11 of 100 completed
+[******                12%                       ]  12 of 100 completed
+[******                13%                       ]  13 of 100 completed
+[*******               14%                       ]  14 of 100 completed
+[*******               15%                       ]  15 of 100 completed
+[********              16%                       ]  16 of 100 completed
+[********              17%                       ]  17 of 100 completed
+[*********             18%                       ]  18 of 100 completed
+[*********             19%                       ]  19 of 100 completed
+[**********            20%                       ]  20 of 100 completed
+[**********            21%                       ]  21 of 100 completed
+[***********           22%                       ]  22 of 100 completed
+[***********           23%                       ]  23 of 100 completed
+[************          24%                       ]  24 of 100 completed
+[************          25%                       ]  25 of 100 completed
+[************          26%                       ]  26 of 100 completed
+[*************         27%                       ]  27 of 100 completed
+[*************         28%                       ]  28 of 100 completed
+[**************        29%                       ]  29 of 100 completed
+[**************        30%                       ]  30 of 100 completed
+[***************       31%                       ]  31 of 100 completed
+[***************       32%                       ]  32 of 100 completed
+[****************      33%                       ]  33 of 100 completed
+[****************      34%                       ]  34 of 100 completed
+[*****************     35%                       ]  35 of 100 completed
+[*****************     36%                       ]  36 of 100 completed
+[******************    37%                       ]  37 of 100 completed
+[******************    38%                       ]  38 of 100 completed
+[*******************   39%                       ]  39 of 100 completed
+[*******************   40%                       ]  40 of 100 completed
+[********************  41%                       ]  41 of 100 completed
+[********************  42%                       ]  42 of 100 completed
+[********************* 43%                       ]  43 of 100 completed
+[********************* 44%                       ]  44 of 100 completed
+[**********************45%                       ]  45 of 100 completed
+[**********************46%                       ]  46 of 100 completed
+[**********************47%                       ]  47 of 100 completed
+[**********************48%                       ]  48 of 100 completed
+[**********************48%                       ]  48 of 100 completed
+[**********************50%                       ]  50 of 100 completed
+[**********************51%                       ]  51 of 100 completed
+[**********************52%                       ]  52 of 100 completed
+[**********************52%                       ]  52 of 100 completed
+[**********************54%*                      ]  54 of 100 completed
+[**********************55%*                      ]  55 of 100 completed
+[**********************56%**                     ]  56 of 100 completed
+[**********************57%**                     ]  57 of 100 completed
+[**********************58%***                    ]  58 of 100 completed
+[**********************59%***                    ]  59 of 100 completed
+[**********************60%****                   ]  60 of 100 completed
+[**********************61%****                   ]  61 of 100 completed
+[**********************62%*****                  ]  62 of 100 completed
+[**********************63%*****                  ]  63 of 100 completed
+[**********************64%******                 ]  64 of 100 completed
+[**********************65%******                 ]  65 of 100 completed
+[**********************66%*******                ]  66 of 100 completed
+[**********************67%*******                ]  67 of 100 completed
+[**********************68%********               ]  68 of 100 completed
+[**********************69%********               ]  69 of 100 completed
+[**********************70%*********              ]  70 of 100 completed
+[**********************71%*********              ]  71 of 100 completed
+[**********************72%**********             ]  72 of 100 completed
+[**********************73%**********             ]  73 of 100 completed
+[**********************74%***********            ]  74 of 100 completed
+[**********************75%***********            ]  75 of 100 completed
+[**********************76%***********            ]  76 of 100 completed
+[**********************77%************           ]  77 of 100 completed
+[**********************78%************           ]  78 of 100 completed
+[**********************79%*************          ]  79 of 100 completed
+[**********************80%*************          ]  80 of 100 completed
+[**********************81%**************         ]  81 of 100 completed
+[**********************82%**************         ]  82 of 100 completed
+[**********************83%***************        ]  83 of 100 completed
+[**********************84%***************        ]  84 of 100 completed
+[**********************85%****************       ]  85 of 100 completed
+[**********************86%****************       ]  86 of 100 completed
+[**********************87%*****************      ]  87 of 100 completed
+[**********************88%*****************      ]  88 of 100 completed
+[**********************89%******************     ]  89 of 100 completed
+[**********************90%******************     ]  90 of 100 completed
+[**********************91%*******************    ]  91 of 100 completed
+[**********************92%*******************    ]  92 of 100 completed
+[**********************93%********************   ]  93 of 100 completed
+[**********************94%********************   ]  94 of 100 completed
+[**********************95%*********************  ]  95 of 100 completed
+[**********************96%*********************  ]  96 of 100 completed
+[**********************97%********************** ]  97 of 100 completed
+[**********************98%********************** ]  98 of 100 completed
+[**********************99%***********************]  99 of 100 completed
+[*********************100%***********************]  100 of 100 completed
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Adj Close'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 104, in <module>
+    analyze_portfolio()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 80, in analyze_portfolio
+    stock_data = download_stock_data(tickers)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 35, in download_stock_data
+    data = yf.download(tickers, start=pd.Timestamp.now() - pd.DateOffset(years=1), end=pd.Timestamp.now())['Adj Close']
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/frame.py", line 4377, in __getitem__
+    return self._getitem_multilevel(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/frame.py", line 4435, in _getitem_multilevel
+    loc = self.columns.get_loc(key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/multi.py", line 3523, in get_loc
+    loc = self._get_level_indexer(key, level=0)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/multi.py", line 3885, in _get_level_indexer
+    idx = self._get_loc_single_level_index(level_index, key)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/multi.py", line 3458, in _get_loc_single_level_index
+    return level_index.get_loc(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Adj Close'
+
+
+[2026-02-25 17:38:59.516268]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    I'll analyze the issue and provide a fixed version of the code. The error occurs because the 'Adj Close' column is not accessible directly from the downloaded data. Here's the corrected code:
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:39:10.458639]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    I'll provide the corrected Python code that analyzes AAPL stock, calculates volatility and Sharpe ratio, and plots trends. Here's the complete solution:
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:39:22.664430]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    ```python
+    ^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:39:35.471660]
+Volatility: 0.3693
+Sharpe Ratio: 0.6986
+
+[*********************100%***********************]  1 of 1 completed
+
+
+[2026-02-25 17:40:43.197622]
+TASK:
+Find best performing NASDAQ stocks in last 12 months and optimize portfolio using Sharpe ratio
+CODE:
+import subprocess, sys
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+install("yfinance")
+install("pandas")
+install("numpy")
+install("scipy")
+install("matplotlib")
+install("requests")
+install("beautifulsoup4")
+
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import requests
+from bs4 import BeautifulSoup
+from scipy.optimize import minimize
+
+def get_nasdaq_tickers():
+    url = 'https://en.wikipedia.org/wiki/Nasdaq-100'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    table = soup.find('table', {'class': 'wikitable'})
+    tickers = []
+    for row in table.findAll('tr')[1:]:
+        ticker = row.findAll('td')[1].text.strip()
+        tickers.append(ticker)
+    return tickers
+
+def download_stock_data(tickers):
+    data = yf.download(tickers, start=pd.Timestamp.now() - pd.DateOffset(years=1), end=pd.Timestamp.now())
+    if hasattr(data.columns, 'levels'):
+        data.columns = data.columns.get_level_values(0)
+    return data['Close']
+
+def calculate_returns(data):
+    returns = data.pct_change().dropna()
+    annual_returns = returns.mean() * 252
+    annual_volatility = returns.std() * np.sqrt(252)
+    sharpe_ratios = annual_returns / annual_volatility
+    return returns, annual_returns, annual_volatility, sharpe_ratios
+
+def find_top_performers(sharpe_ratios, n=20):
+    top_performers = sharpe_ratios.sort_values(ascending=False).head(n)
+    return top_performers.index.tolist()
+
+def optimize_portfolio(returns, tickers):
+    cov_matrix = returns.cov()
+    
+    def portfolio_stats(weights):
+        port_return = np.sum(returns.mean() * weights) * 252
+        port_volatility = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights))) * np.sqrt(252)
+        sharpe = port_return / port_volatility
+        return -sharpe
+    
+    num_assets = len(tickers)
+    constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+    bounds = tuple((0,1) for asset in range(num_assets))
+    initial_weights = np.array(num_assets * [1./num_assets])
+    
+    optimized = minimize(portfolio_stats, initial_weights, method='SLSQP', 
+                         bounds=bounds, constraints=constraints)
+    return optimized.x
+
+def plot_performance(portfolio, optimized_weights, tickers):
+    plt.figure(figsize=(14,7))
+    portfolio['Portfolio'] = np.sum(portfolio[tickers] * optimized_weights, axis=1)
+    portfolio['Portfolio'].plot(label='Optimized Portfolio', linewidth=2)
+    plt.title('Optimized Portfolio Performance')
+    plt.xlabel('Date')
+    plt.ylabel('Normalized Price')
+    plt.legend()
+    plt.show()
+
+def analyze_portfolio():
+    tickers = get_nasdaq_tickers()
+    stock_data = download_stock_data(tickers)
+    returns, annual_returns, annual_volatility, sharpe_ratios = calculate_returns(stock_data)
+    
+    top_tickers = find_top_performers(sharpe_ratios)
+    top_data = stock_data[top_tickers]
+    top_returns = returns[top_tickers]
+    
+    optimized_weights = optimize_portfolio(top_returns, top_tickers)
+    weights_df = pd.DataFrame({'Ticker': top_tickers, 'Weight': optimized_weights})
+    weights_df = weights_df.sort_values(by='Weight', ascending=False)
+    
+    initial_port = top_data.iloc[0].values
+    portfolio = top_data.div(initial_port).mul(100)
+    
+    print("\nTop Performers based on Sharpe Ratio:")
+    print(sharpe_ratios[top_tickers].sort_values(ascending=False))
+    print("\nOptimized Portfolio Weights:")
+    print(weights_df)
+    
+    plot_performance(portfolio, optimized_weights, top_tickers)
+    
+    return weights_df
+
+if __name__ == '__main__':
+    analyze_portfolio()
+
+[2026-02-25 17:40:45.506013]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 107, in <module>
+    analyze_portfolio()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 82, in analyze_portfolio
+    tickers = get_nasdaq_tickers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 31, in get_nasdaq_tickers
+    for row in table.findAll('tr')[1:]:
+               ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'findAll'
+
+
+[2026-02-25 17:41:23.543207]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 109, in <module>
+    analyze_portfolio()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 84, in analyze_portfolio
+    tickers = get_nasdaq_tickers()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 31, in get_nasdaq_tickers
+    raise ValueError("Could not find Nasdaq-100 components table")
+ValueError: Could not find Nasdaq-100 components table
+
+
+[2026-02-25 17:42:09.069705]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    I'll fix the issue by modifying the table location method and handling the data download more robustly. Here's the corrected code:
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:42:46.381906]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    Here's the cleaned up version of the code without any explanations or markdown:
+        ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+
+[2026-02-25 17:43:03.001771]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    I'll provide a clean version of the code that analyzes AAPL stock and calculates volatility and Sharpe ratio without any markdown or explanations:
+     ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+
+[2026-02-25 17:43:17.682327]
+
+AAPL Analysis Results:
+
+[*********************100%***********************]  1 of 1 completed
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 57, in <module>
+    analyze_stock()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 45, in analyze_stock
+    print(f"Annualized Volatility: {volatility:.4f}")
+                                   ^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to Series.__format__
+
+
+[2026-02-25 17:43:38.223009]
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 1
+    The error occurs because the volatility calculation is returning a pandas Series instead of a single scalar value. Let's fix this by ensuring we're working with scalar values throughout the calculations:
+        ^^^^^
+SyntaxError: invalid syntax
+
+
+[2026-02-25 17:43:56.221518]
+
+AAPL Analysis Results:
+Annualized Volatility: 0.3238
+Sharpe Ratio: 0.4987
+
+[*********************100%***********************]  1 of 1 completed
+
+
+[2026-02-25 18:18:22.923229]
+TASK:
+Make me a memecoin signal engine
+CODE:
+import subprocess, sys
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+install("yfinance")
+install("pandas")
+install("numpy")
+install("scipy")
+install("matplotlib")
+install("requests")
+install("beautifulsoup4")
+install("tweepy")
+install("textblob")
+
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import requests
+from bs4 import BeautifulSoup
+import tweepy
+from textblob import TextBlob
+from datetime import datetime, timedelta
+
+def get_memecoin_tickers():
+    url = 'https://coinmarketcap.com/view/meme/'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    table = soup.find('table')
+    tickers = []
+    for row in table.findAll('tr')[1:]:
+        ticker = row.findAll('td')[2].text.strip()
+        tickers.append(ticker)
+    return tickers
+
+def download_memecoin_data(tickers):
+    data = yf.download(tickers, start=datetime.now() - timedelta(days=7), end=datetime.now())
+    if hasattr(data.columns, 'levels'):
+        data.columns = data.columns.get_level_values(0)
+    return data['Close']
+
+def calculate_returns(data):
+    returns = data.pct_change().dropna()
+    return returns
+
+def get_twitter_sentiment(ticker):
+    auth = tweepy.OAuthHandler("CONSUMER_KEY", "CONSUMER_SECRET")
+    auth.set_access_token("ACCESS_TOKEN", "ACCESS_TOKEN_SECRET")
+    api = tweepy.API(auth)
+    tweets = tweepy.Cursor(api.search_tweets, q=ticker, lang="en", tweet_mode='extended').items(100)
+    sentiment = 0
+    for tweet in tweets:
+        analysis = TextBlob(tweet.full_text)
+        sentiment += analysis.sentiment.polarity
+    return sentiment / 100
+
+def analyze_memecoin(ticker):
+    data = download_memecoin_data([ticker])
+    returns = calculate_returns(data)
+    volatility = returns.std() * np.sqrt(252)
+    sentiment = get_twitter_sentiment(ticker)
+    return {'ticker': ticker, 'volatility': volatility, 'sentiment': sentiment}
+
+def generate_signals():
+    tickers = get_memecoin_tickers()
+    signals = []
+    for ticker in tickers:
+        analysis = analyze_memecoin(ticker)
+        if analysis['volatility'] > 0.5 and analysis['sentiment'] > 0.2:
+            signals.append(ticker)
+    return signals
+
+def plot_signals(signals):
+    plt.figure(figsize=(14,7))
+    plt.bar(signals, [1]*len(signals))
+    plt.title('Memecoin Buy Signals')
+    plt.xlabel('Ticker')
+    plt.ylabel('Signal Strength')
+    plt.show()
+
+if __name__ == '__main__':
+    signals = generate_signals()
+    print("Memecoin Buy Signals:", signals)
+    plot_signals(signals)
+
+[2026-02-25 18:18:30.532024]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+  WARNING: The script tqdm is installed in '/usr/local/python/3.12.1/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script nltk is installed in '/usr/local/python/3.12.1/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 86, in <module>
+    signals = generate_signals()
+              ^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 69, in generate_signals
+    tickers = get_memecoin_tickers()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 35, in get_memecoin_tickers
+    for row in table.findAll('tr')[1:]:
+               ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'findAll'
+
+
+[2026-02-25 18:20:00.450312]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 88, in <module>
+    signals = generate_signals()
+              ^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 71, in generate_signals
+    tickers = get_memecoin_tickers()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 35, in get_memecoin_tickers
+    raise ValueError("Could not find memecoin table")
+ValueError: Could not find memecoin table
+
+
+[2026-02-25 18:22:32.809528]
+TASK:
+find me the most overpriced or underpriced prediction in https://coinmarketcap.com/prediction-markets/?category=crypto
+CODE:
+import subprocess, sys
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+install("requests")
+install("pandas")
+install("beautifulsoup4")
+
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+
+def get_prediction_market_data():
+    url = "https://coinmarketcap.com/prediction-markets/?category=crypto"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    table = soup.find('table', {'class': 'sc-14cb040a-3 eDTzMB cmc-table'})
+    if not table:
+        raise ValueError("Could not find prediction markets table")
+    
+    headers = [th.text.strip() for th in table.find('thead').findAll('th')]
+    rows = []
+    
+    for tr in table.find('tbody').findAll('tr'):
+        cols = [td.text.strip() for td in tr.findAll('td') if td.text.strip()]
+        cols_td = tr.findAll('td')
+        
+        if len(cols) >= 9:
+            price_str = cols[4].replace('$', '').replace(',', '').strip()
+            last_close_str = cols[7].replace('$', '').replace(',', '').strip()
+            price_prediction_str = cols[9].replace('$', '').replace(',', '').strip()
+            
+            try:
+                price = float(price_str)
+            except ValueError:
+                price = np.nan
+                
+            try:
+                last_close = float(last_close_str)
+            except ValueError:
+                last_close = np.nan
+                
+            try:
+                price_prediction = float(price_prediction_str)
+            except ValueError:
+                price_prediction = np.nan
+                
+            discrepancy = (price_prediction - price) / price * 100 if not np.isnan(price) and price != 0 else np.nan
+            discrepancy_close = (price_prediction - last_close) / last_close * 100 if not np.isnan(last_close) and last_close != 0 else np.nan
+            
+            rows.append({
+                'Asset': cols[1],
+                'Price': price,
+                'Predicted_Price': price_prediction,
+                'Discrepancy_vs_Current': discrepancy,
+                'Discrepancy_vs_Last_Close': discrepancy_close,
+                'Market_Cap': cols[2],
+                '24h_Change': cols[5],
+                'Volume': cols[6],
+                'Last_Close': last_close
+            })
+    
+    df = pd.DataFrame(rows)
+    return df
+
+def analyze_over_under_priced(df):
+    df = df[~df['Discrepancy_vs_Current'].isna()]
+    if df.empty:
+        return None, None
+    
+    most_overpriced = df.loc[df['Discrepancy_vs_Current'].idxmin()]
+    most_underpriced = df.loc[df['Discrepancy_vs_Current'].idxmax()]
+    
+    return most_overpriced, most_underpriced
+
+def main():
+    df = get_prediction_market_data()
+    most_overpriced, most_underpriced = analyze_over_under_priced(df)
+    
+    print("\nMost Overpriced Prediction Market:")
+    print(most_overpriced)
+    print("\nMost Underpriced Prediction Market:")
+    print(most_underpriced)
+    
+    return most_overpriced, most_underpriced
+
+if __name__ == "__main__":
+    main()
+
+[2026-02-25 18:22:34.890400]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 98, in <module>
+    main()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 87, in main
+    df = get_prediction_market_data()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 29, in get_prediction_market_data
+    raise ValueError("Could not find prediction markets table")
+ValueError: Could not find prediction markets table
+
+
+[2026-02-25 18:22:57.520137]
+Error: Could not find prediction markets table
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+
+
+[2026-02-25 18:29:59.798659]
+TASK:
+You are an autonomous Python agent designed to operate in prediction markets. Your goal is to maximize expected value across multiple contracts while managing risk. 
+CODE:
+import subprocess, sys
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+install("numpy")
+install("pandas")
+install("scipy")
+install("requests")
+install("beautifulsoup4")
+
+import numpy as np
+import pandas as pd
+from scipy.optimize import minimize
+import requests
+from bs4 import BeautifulSoup
+
+def get_prediction_market_data():
+    url = "https://coinmarketcap.com/prediction-markets/?category=crypto"
+    headers = {"User-Agent": "Mozilla/5.0"}
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    table = soup.find('table', {'class': 'sc-14cb040a-3 eDTzMB cmc-table'})
+    if not table:
+        raise ValueError("Could not find prediction markets table")
+    
+    rows = []
+    for tr in table.find('tbody').findAll('tr'):
+        cols = [td.text.strip() for td in tr.findAll('td')]
+        if len(cols) >= 10:
+            try:
+                price = float(cols[4].replace('$', '').replace(',', ''))
+                prediction = float(cols[9].replace('$', '').replace(',', ''))
+                rows.append({
+                    'asset': cols[1],
+                    'price': price,
+                    'prediction': prediction,
+                    'discrepancy': (prediction - price) / price * 100
+                })
+            except ValueError:
+                continue
+    return pd.DataFrame(rows)
+
+def calculate_expected_value(row, investment):
+    return (row['prediction'] - row['price']) * investment / row['price']
+
+def portfolio_optimization(df, total_capital):
+    def objective(weights):
+        expected_values = np.array([calculate_expected_value(row, weights[i] * total_capital) 
+                                   for i, row in df.iterrows()])
+        return -np.sum(expected_values)
+    
+    def constraint(weights):
+        return np.sum(weights) - 1
+    
+    bounds = [(0, 1) for _ in range(len(df))]
+    initial_weights = np.array([1/len(df) for _ in range(len(df))])
+    constraints = {'type': 'eq', 'fun': constraint}
+    
+    result = minimize(objective, initial_weights, method='SLSQP', bounds=bounds, constraints=constraints)
+    return result.x
+
+def manage_risk(df, weights, total_capital):
+    portfolio_value = np.sum([weights[i] * total_capital for i in range(len(df))])
+    portfolio_expected_value = np.sum([calculate_expected_value(row, weights[i] * total_capital) 
+                                      for i, row in df.iterrows()])
+    risk_score = np.std([weights[i] * total_capital for i in range(len(df))]) / portfolio_value
+    return portfolio_value, portfolio_expected_value, risk_score
+
+def main():
+    total_capital = 10000
+    df = get_prediction_market_data()
+    weights = portfolio_optimization(df, total_capital)
+    portfolio_value, portfolio_expected_value, risk_score = manage_risk(df, weights, total_capital)
+    
+    print("Optimal Portfolio Weights:")
+    for i, row in df.iterrows():
+        print(f"{row['asset']}: {weights[i]:.2%}")
+    
+    print(f"\nPortfolio Value: ${portfolio_value:,.2f}")
+    print(f"Expected Portfolio Value: ${portfolio_expected_value:,.2f}")
+    print(f"Risk Score: {risk_score:.4f}")
+
+if __name__ == "__main__":
+    main()
+
+[2026-02-25 18:30:02.457974]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 89, in <module>
+    main()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 76, in main
+    df = get_prediction_market_data()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 29, in get_prediction_market_data
+    raise ValueError("Could not find prediction markets table")
+ValueError: Could not find prediction markets table
+
+
+[2026-02-25 18:30:56.078463]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python -m pip install --upgrade pip
+Traceback (most recent call last):
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 89, in <module>
+    main()
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 76, in main
+    df = get_prediction_market_data()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/sentcapitalv1/workspace/generated.py", line 29, in get_prediction_market_data
+    raise ValueError("Could not find prediction markets table")
+ValueError: Could not find prediction markets table
+
+
+[2026-02-25 18:34:10.860460]
+TASK:
+You are a financial strategy assistant. Focus only on short-term prediction and backtesting for the following 5-minute market: https://polymarket.com/event/sol-updown-5m-1772027100
+CODE:
+
+
+[2026-02-25 18:34:10.875156]
+
+
+[2026-02-25 18:34:11.068144]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:34:11.084167]
+
+
+[2026-02-25 18:34:11.155559]
+TASK:
+Task:
+CODE:
+
+
+[2026-02-25 18:34:11.170055]
+
+
+[2026-02-25 18:34:11.243832]
+TASK:
+1. Analyze historical price/movement data I provide (5-min updates). 
+CODE:
+
+
+[2026-02-25 18:34:11.270249]
+
+
+[2026-02-25 18:34:11.523782]
+TASK:
+2. Backtest simple trading strategies (like trend following, moving average cross, or volatility-based entry/exit).
+CODE:
+
+
+[2026-02-25 18:34:11.556027]
+
+
+[2026-02-25 18:34:11.681224]
+TASK:
+3. Calculate key metrics: win rate, average return, max drawdown, and Sharpe ratio.
+CODE:
+
+
+[2026-02-25 18:34:11.705060]
+
+
+[2026-02-25 18:34:11.799927]
+TASK:
+4. Suggest the single most promising short-term strategy based on recent patterns.
+CODE:
+
+
+[2026-02-25 18:34:11.820274]
+
+
+[2026-02-25 18:34:11.911256]
+TASK:
+5. Only output structured results: backtest summary and actionable signals. No extra commentary, no code unless requested.
+CODE:
+
+
+[2026-02-25 18:34:11.933806]
+
+
+[2026-02-25 18:34:12.002569]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:34:12.020346]
+
+
+[2026-02-25 18:34:12.106777]
+TASK:
+Constraints:
+CODE:
+
+
+[2026-02-25 18:34:12.125011]
+
+
+[2026-02-25 18:34:12.250329]
+TASK:
+- Focus only on efficiency: do not simulate unnecessary scenarios.
+CODE:
+
+
+[2026-02-25 18:34:12.268448]
+
+
+[2026-02-25 18:34:12.352126]
+TASK:
+- Assume each update is a 5-minute interval.
+CODE:
+
+
+[2026-02-25 18:34:12.368345]
+
+
+[2026-02-25 18:34:12.499584]
+TASK:
+- Keep instructions concise for minimal token usage.
+CODE:
+
+
+[2026-02-25 18:34:12.525317]
+
+
+[2026-02-25 18:38:42.957173]
+TASK:
+You are a financial strategy assistant. Focus only on short-term prediction and backtesting for the following 5-minute market: https://polymarket.com/event/sol-updown-5m-1772027100
+CODE:
+import subprocess, sys, math, time, json, os, traceback
+from datetime import datetime, timezone
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+for pkg in ["requests", "pandas", "numpy"]:
+    install(pkg)
+
+import requests
+import pandas as pd
+import numpy as np
+
+POLYMARKET_URL = "https://polymarket.com/event/sol-updown-5m-1772027100"
+SYMBOL = "SOLUSDT"
+INTERVAL = "5m"
+BINANCE_BASE = "https://api.binance.com"
+PERIODS_PER_YEAR_5M = 365 * 24 * 12
+
+def utc_iso(ms):
+    return datetime.fromtimestamp(ms / 1000, tz=timezone.utc).isoformat()
+
+def safe_float(x):
+    try:
+        return float(x)
+    except Exception:
+        return np.nan
+
+def http_get_json(url, params=None, headers=None, timeout=15, retries=5, backoff=0.8):
+    last_err = None
+    for i in range(retries):
+        try:
+            r = requests.get(url, params=params, headers=headers, timeout=timeout)
+            if r.status_code == 429:
+                time.sleep(backoff * (2 ** i))
+                continue
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            last_err = e
+            time.sleep(backoff * (2 ** i))
+    raise last_err
+
+def fetch_binance_klines(symbol, interval, target_bars=3000, limit=1000):
+    url = f"{BINANCE_BASE}/api/v3/klines"
+    end_time = int(time.time() * 1000)
+    all_rows = []
+    remaining = int(target_bars)
+    cur_end = end_time
+    while remaining > 0:
+        batch = min(limit, remaining if remaining > 0 else limit)
+        params = {"symbol": symbol, "interval": interval, "limit": batch, "endTime": cur_end}
+        data = http_get_json(url, params=params)
+        if not isinstance(data, list) or len(data) == 0:
+            break
+        all_rows = data + all_rows
+        first_open = int(data[0][0])
+        cur_end = first_open - 1
+        remaining -= len(data)
+        if len(data) < batch:
+            break
+        time.sleep(0.08)
+    if not all_rows:
+        return pd.DataFrame(columns=["open_time", "open", "high", "low", "close", "volume", "close_time"])
+    df = pd.DataFrame(all_rows, columns=[
+        "open_time","open","high","low","close","volume",
+        "close_time","quote_asset_volume","num_trades",
+        "taker_buy_base_asset_volume","taker_buy_quote_asset_volume","ignore"
+    ])
+    df["open_time"] = df["open_time"].astype("int64")
+    df["close_time"] = df["close_time"].astype("int64")
+    for c in ["open","high","low","close","volume"]:
+        df[c] = df[c].astype("float64")
+    df = df[["open_time","open","high","low","close","volume","close_time"]].drop_duplicates(subset=["open_time"]).sort_values("open_time")
+    df = df.reset_index(drop=True)
+    return df
+
+def compute_equity_curve(returns):
+    returns = returns.fillna(0.0).astype("float64")
+    equity = (1.0 + returns).cumprod()
+    return equity
+
+def max_drawdown(equity_curve):
+    if len(equity_curve) == 0:
+        return 0.0
+    peak = equity_curve.cummax()
+    dd = (equity_curve / peak) - 1.0
+    return float(dd.min())
+
+def sharpe_ratio(returns, periods_per_year=PERIODS_PER_YEAR_5M):
+    r = returns.replace([np.inf, -np.inf], np.nan).dropna().astype("float64")
+    if len(r) < 3:
+        return float("nan")
+    mu = float(r.mean())
+    sd = float(r.std(ddof=1))
+    if not np.isfinite(sd) or sd == 0.0:
+        return float("nan")
+    return float((mu / sd) * math.sqrt(periods_per_year))
+
+def summarize_strategy(name, params, position, next_ret, trade_mask=None):
+    position = position.astype("float64").fillna(0.0)
+    next_ret = next_ret.astype("float64").fillna(0.0)
+    strat_ret = position * next_ret
+
+    equity = compute_equity_curve(strat_ret)
+    mdd = max_drawdown(equity)
+    sh = sharpe_ratio(strat_ret)
+
+    if trade_mask is None:
+        trade_mask = position != 0.0
+    trade_mask = trade_mask.fillna(False)
+
+    trades = int(trade_mask.sum())
+    if trades > 0:
+        trade_rets = strat_ret[trade_mask]
+        wins = int((trade_rets > 0).sum())
+        losses = int((trade_rets < 0).sum())
+        ties = int((trade_rets == 0).sum())
+        win_rate = float(wins / trades)
+        avg_ret = float(trade_rets.mean())
+        med_ret = float(trade_rets.median())
+        hit_rate_last_288 = float((trade_rets.tail(288) > 0).mean()) if len(trade_rets) > 0 else float("nan")
+    else:
+        wins = losses = ties = 0
+        win_rate = float("nan")
+        avg_ret = float("nan")
+        med_ret = float("nan")
+        hit_rate_last_288 = float("nan")
+
+    total_return = float(equity.iloc[-1] - 1.0) if len(equity) else 0.0
+
+    out = {
+        "strategy": name,
+        "params": params,
+        "bars": int(len(next_ret)),
+        "trades": trades,
+        "wins": wins,
+        "losses": losses,
+        "ties": ties,
+        "win_rate": win_rate,
+        "avg_return_per_trade": avg_ret,
+        "median_return_per_trade": med_ret,
+        "total_return_compounded": total_return,
+        "max_drawdown": mdd,
+        "sharpe_annualized_5m": sh,
+        "recent_win_rate_last_288_trades_or_less": hit_rate_last_288
+    }
+    return out, strat_ret, equity
+
+def strategy_momentum(df, lookback=3, min_abs_move=0.0):
+    close = df["close"]
+    ret1 = close.pct_change()
+    mom = close.pct_change(lookback)
+    signal = np.sign(mom)
+    if min_abs_move and min_abs_move > 0:
+        signal = signal.where(mom.abs() >= min_abs_move, 0.0)
+    signal = signal.shift(1).fillna(0.0)
+    position = signal.clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    return position, next_ret
+
+def strategy_ma_cross(df, fast=8, slow=21, band=0.0):
+    close = df["close"]
+    ret1 = close.pct_change()
+    f = close.rolling(fast, min_periods=fast).mean()
+    s = close.rolling(slow, min_periods=slow).mean()
+    diff = (f - s) / s
+    signal = np.sign(diff)
+    if band and band > 0:
+        signal = signal.where(diff.abs() >= band, 0.0)
+    signal = signal.shift(1).fillna(0.0)
+    position = signal.clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    return position, next_ret
+
+def strategy_volatility_breakout(df, vol_window=36, z=1.25):
+    close = df["close"]
+    ret1 = close.pct_change()
+    vol = ret1.rolling(vol_window, min_periods=vol_window).std(ddof=1)
+    cond = (ret1.abs() > (z * vol))
+    signal = np.sign(ret1).where(cond, 0.0)
+    signal = signal.shift(1).fillna(0.0)
+    position = signal.clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    trade_mask = signal != 0.0
+    return position, next_ret, trade_mask
+
+def choose_best(summary_rows):
+    df = pd.DataFrame(summary_rows)
+    if df.empty:
+        return None
+    df2 = df.copy()
+    df2["min_trades_ok"] = df2["trades"] >= 30
+    df2["score"] = df2["sharpe_annualized_5m"]
+    df2.loc[~df2["min_trades_ok"], "score"] = np.nan
+    if df2["score"].notna().any():
+        best_idx = df2["score"].idxmax()
+        return summary_rows[int(best_idx)]
+    df2["score2"] = df2["recent_win_rate_last_288_trades_or_less"]
+    if df2["score2"].notna().any():
+        best_idx = df2["score2"].idxmax()
+        return summary_rows[int(best_idx)]
+    best_idx = df2["trades"].idxmax()
+    return summary_rows[int(best_idx)]
+
+def latest_signal(best_name, df):
+    close = df["close"]
+    if len(close) < 50:
+        return {"signal": "HOLD", "side": "NEUTRAL", "confidence": None}
+
+    if best_name == "momentum":
+        position, next_ret = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+        pos = float(position.iloc[-1])
+        conf = None
+    elif best_name == "ma_cross":
+        position, next_ret = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+        pos = float(position.iloc[-1])
+        conf = None
+    elif best_name == "vol_breakout":
+        position, next_ret, trade_mask = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+        pos = float(position.iloc[-1])
+        conf = None
+    else:
+        return {"signal": "HOLD", "side": "NEUTRAL", "confidence": None}
+
+    if pos > 0:
+        return {"signal": "YES", "side": "UP", "confidence": conf}
+    if pos < 0:
+        return {"signal": "NO", "side": "DOWN", "confidence": conf}
+    return {"signal": "HOLD", "side": "NEUTRAL", "confidence": conf}
+
+def compute_directional_confidence(best_summary, df, best_strat_name):
+    try:
+        if best_strat_name == "momentum":
+            position, next_ret = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+            trade_mask = position != 0
+        elif best_strat_name == "ma_cross":
+            position, next_ret = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+            trade_mask = position != 0
+        elif best_strat_name == "vol_breakout":
+            position, next_ret, trade_mask = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+        else:
+            return None
+
+        position = position.fillna(0.0)
+        next_ret = next_ret.fillna(0.0)
+        strat_ret = (position * next_ret)
+        tm = trade_mask.fillna(False)
+        recent_mask = tm.copy()
+        recent_mask.iloc[:-288] = False if len(recent_mask) > 288 else recent_mask.iloc[:-0]
+        if len(recent_mask) > 288:
+            recent = strat_ret[recent_mask]
+        else:
+            recent = strat_ret[tm].tail(288)
+        if len(recent) >= 20:
+            return float((recent > 0).mean())
+        overall = strat_ret[tm]
+        if len(overall) >= 20:
+            return float((overall > 0).mean())
+    except Exception:
+        return None
+    return None
+
+def main():
+    out = {
+        "market": {
+            "url": POLYMARKET_URL,
+            "underlying_proxy": "binance_spot",
+            "symbol": SYMBOL,
+            "interval": INTERVAL
+        },
+        "backtest_summary": [],
+        "best_strategy": None,
+        "actionable_signals": None,
+        "errors": []
+    }
+
+    try:
+        df = fetch_binance_klines(SYMBOL, INTERVAL, target_bars=3000, limit=1000)
+        if df.empty or len(df) < 300:
+            raise RuntimeError(f"Insufficient data: {len(df)} bars")
+        out["market"]["data_start_utc"] = utc_iso(int(df["open_time"].iloc[0]))
+        out["market"]["data_end_utc"] = utc_iso(int(df["close_time"].iloc[-1]))
+        out["market"]["bars"] = int(len(df))
+
+        rows = []
+
+        pos, nxt = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+        s, _, _ = summarize_strategy("momentum", {"lookback_bars": 3, "min_abs_move": 0.0}, pos, nxt)
+        rows.append(s)
+
+        pos, nxt = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+        s, _, _ = summarize_strategy("ma_cross", {"fast": 8, "slow": 21, "band": 0.0008}, pos, nxt)
+        rows.append(s)
+
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+        s, _, _ = summarize_strategy("vol_breakout", {"vol_window": 36, "z": 1.25}, pos, nxt, trade_mask=tm)
+        rows.append(s)
+
+        out["backtest_summary"] = rows
+        best = choose_best(rows)
+        out["best_strategy"] = best
+
+        if best is not None:
+            best_name = best["strategy"]
+            sig = latest_signal(best_name, df)
+            conf = compute_directional_confidence(best, df, best_name)
+            sig["confidence"] = conf
+            sig["timestamp_utc"] = utc_iso(int(df["close_time"].iloc[-1]))
+            sig["last_close"] = float(df["close"].iloc[-1])
+            sig["basis"] = {
+                "best_strategy": best_name,
+                "best_strategy_sharpe_annualized_5m": best.get("sharpe_annualized_5m"),
+                "best_strategy_recent_win_rate": best.get("recent_win_rate_last_288_trades_or_less"),
+                "best_strategy_trades": best.get("trades")
+            }
+            out["actionable_signals"] = sig
+        else:
+            out["actionable_signals"] = {
+                "signal": "HOLD",
+                "side": "NEUTRAL",
+                "confidence": None,
+                "timestamp_utc": utc_iso(int(df["close_time"].iloc[-1])) if len(df) else None
+            }
+
+    except Exception as e:
+        out["errors"].append({"type": type(e).__name__, "message": str(e), "trace": traceback.format_exc()})
+
+    print(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+
+if __name__ == "__main__":
+    main()
+
+
+[2026-02-25 18:38:46.345841]
+{"market":{"url":"https://polymarket.com/event/sol-updown-5m-1772027100","underlying_proxy":"binance_spot","symbol":"SOLUSDT","interval":"5m","data_start_utc":"2026-02-15T08:40:00+00:00","data_end_utc":"2026-02-25T18:39:59.999000+00:00","bars":3000},"backtest_summary":[{"strategy":"momentum","params":{"lookback_bars":3,"min_abs_move":0.0},"bars":3000,"trades":2941,"wins":1345,"losses":1478,"ties":118,"win_rate":0.4573274396463788,"avg_return_per_trade":-6.890050142515447e-05,"median_return_per_trade":-0.00011591515011000197,"total_return_compounded":-0.18952577318905073,"max_drawdown":-0.21969933879533698,"sharpe_annualized_5m":-9.794806363068064,"recent_win_rate_last_288_trades_or_less":0.4791666666666667},{"strategy":"ma_cross","params":{"fast":8,"slow":21,"band":0.0008},"bars":3000,"trades":2325,"wins":1100,"losses":1139,"ties":86,"win_rate":0.4731182795698925,"avg_return_per_trade":-4.6834532811124606e-05,"median_return_per_trade":0.0,"total_return_compounded":-0.10869693930504387,"max_drawdown":-0.1832928431769254,"sharpe_annualized_5m":-5.796181124936278,"recent_win_rate_last_288_trades_or_less":0.5138888888888888},{"strategy":"vol_breakout","params":{"vol_window":36,"z":1.25},"bars":3000,"trades":523,"wins":217,"losses":286,"ties":20,"win_rate":0.4149139579349904,"avg_return_per_trade":-0.00016879338666272743,"median_return_per_trade":-0.0002348244687095935,"total_return_compounded":-0.08615444965222474,"max_drawdown":-0.1281688151152337,"sharpe_annualized_5m":-8.674233941935942,"recent_win_rate_last_288_trades_or_less":0.4513888888888889}],"best_strategy":{"strategy":"ma_cross","params":{"fast":8,"slow":21,"band":0.0008},"bars":3000,"trades":2325,"wins":1100,"losses":1139,"ties":86,"win_rate":0.4731182795698925,"avg_return_per_trade":-4.6834532811124606e-05,"median_return_per_trade":0.0,"total_return_compounded":-0.10869693930504387,"max_drawdown":-0.1832928431769254,"sharpe_annualized_5m":-5.796181124936278,"recent_win_rate_last_288_trades_or_less":0.5138888888888888},"actionable_signals":{"signal":"YES","side":"UP","confidence":0.5176470588235295,"timestamp_utc":"2026-02-25T18:39:59.999000+00:00","last_close":88.95,"basis":{"best_strategy":"ma_cross","best_strategy_sharpe_annualized_5m":-5.796181124936278,"best_strategy_recent_win_rate":0.5138888888888888,"best_strategy_trades":2325}},"errors":[]}
+
+
+[2026-02-25 18:39:26.200346]
+TASK:
+
+CODE:
+import subprocess, sys, math, time, json, traceback
+from datetime import datetime, timezone
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+for pkg in ["requests", "pandas", "numpy"]:
+    install(pkg)
+
+import requests
+import pandas as pd
+import numpy as np
+
+POLYMARKET_URL = "https://polymarket.com/event/sol-updown-5m-1772027100"
+SYMBOL = "SOLUSDT"
+INTERVAL = "5m"
+BINANCE_BASE = "https://api.binance.com"
+PERIODS_PER_YEAR_5M = 365 * 24 * 12
+
+def utc_iso(ms):
+    return datetime.fromtimestamp(ms / 1000, tz=timezone.utc).isoformat()
+
+def http_get_json(url, params=None, headers=None, timeout=15, retries=6, backoff=0.8):
+    last_err = None
+    headers = headers or {"User-Agent": "Mozilla/5.0"}
+    for i in range(retries):
+        try:
+            r = requests.get(url, params=params, headers=headers, timeout=timeout)
+            if r.status_code == 429:
+                time.sleep(backoff * (2 ** i))
+                continue
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            last_err = e
+            time.sleep(backoff * (2 ** i))
+    raise last_err
+
+def fetch_binance_klines(symbol, interval, target_bars=3000, limit=1000):
+    url = f"{BINANCE_BASE}/api/v3/klines"
+    end_time = int(time.time() * 1000)
+    all_rows = []
+    remaining = int(target_bars)
+    cur_end = end_time
+    while remaining > 0:
+        batch = min(limit, remaining)
+        params = {"symbol": symbol, "interval": interval, "limit": batch, "endTime": cur_end}
+        data = http_get_json(url, params=params)
+        if not isinstance(data, list) or len(data) == 0:
+            break
+        all_rows = data + all_rows
+        first_open = int(data[0][0])
+        cur_end = first_open - 1
+        remaining -= len(data)
+        if len(data) < batch:
+            break
+        time.sleep(0.08)
+
+    if not all_rows:
+        return pd.DataFrame(columns=["open_time", "open", "high", "low", "close", "volume", "close_time"])
+
+    df = pd.DataFrame(all_rows, columns=[
+        "open_time","open","high","low","close","volume",
+        "close_time","quote_asset_volume","num_trades",
+        "taker_buy_base_asset_volume","taker_buy_quote_asset_volume","ignore"
+    ])
+    df["open_time"] = pd.to_numeric(df["open_time"], errors="coerce").astype("Int64")
+    df["close_time"] = pd.to_numeric(df["close_time"], errors="coerce").astype("Int64")
+    for c in ["open","high","low","close","volume"]:
+        df[c] = pd.to_numeric(df[c], errors="coerce").astype("float64")
+    df = df.dropna(subset=["open_time","close_time","close"])
+    df["open_time"] = df["open_time"].astype("int64")
+    df["close_time"] = df["close_time"].astype("int64")
+    df = df[["open_time","open","high","low","close","volume","close_time"]].drop_duplicates(subset=["open_time"]).sort_values("open_time").reset_index(drop=True)
+    return df
+
+def compute_equity_curve(returns):
+    r = returns.replace([np.inf, -np.inf], np.nan).fillna(0.0).astype("float64")
+    return (1.0 + r).cumprod()
+
+def max_drawdown(equity_curve):
+    if equity_curve is None or len(equity_curve) == 0:
+        return 0.0
+    peak = equity_curve.cummax()
+    dd = (equity_curve / peak) - 1.0
+    v = float(dd.min())
+    return v if np.isfinite(v) else 0.0
+
+def sharpe_ratio(returns, periods_per_year=PERIODS_PER_YEAR_5M):
+    r = returns.replace([np.inf, -np.inf], np.nan).dropna().astype("float64")
+    if len(r) < 3:
+        return float("nan")
+    mu = float(r.mean())
+    sd = float(r.std(ddof=1))
+    if not np.isfinite(sd) or sd == 0.0:
+        return float("nan")
+    return float((mu / sd) * math.sqrt(periods_per_year))
+
+def summarize_strategy(name, params, position, next_ret, trade_mask=None):
+    position = position.replace([np.inf, -np.inf], np.nan).fillna(0.0).astype("float64")
+    next_ret = next_ret.replace([np.inf, -np.inf], np.nan).fillna(0.0).astype("float64")
+    strat_ret = position * next_ret
+
+    equity = compute_equity_curve(strat_ret)
+    mdd = max_drawdown(equity)
+    sh = sharpe_ratio(strat_ret)
+
+    if trade_mask is None:
+        trade_mask = position != 0.0
+    trade_mask = trade_mask.fillna(False)
+
+    trades = int(trade_mask.sum())
+    if trades > 0:
+        trade_rets = strat_ret[trade_mask]
+        wins = int((trade_rets > 0).sum())
+        losses = int((trade_rets < 0).sum())
+        ties = int((trade_rets == 0).sum())
+        win_rate = float(wins / trades) if trades else float("nan")
+        avg_ret = float(trade_rets.mean()) if len(trade_rets) else float("nan")
+        med_ret = float(trade_rets.median()) if len(trade_rets) else float("nan")
+        recent = trade_rets.tail(288)
+        recent_wr = float((recent > 0).mean()) if len(recent) else float("nan")
+    else:
+        wins = losses = ties = 0
+        win_rate = float("nan")
+        avg_ret = float("nan")
+        med_ret = float("nan")
+        recent_wr = float("nan")
+
+    total_return = float(equity.iloc[-1] - 1.0) if len(equity) else 0.0
+
+    out = {
+        "strategy": name,
+        "params": params,
+        "bars": int(len(next_ret)),
+        "trades": trades,
+        "wins": wins,
+        "losses": losses,
+        "ties": ties,
+        "win_rate": win_rate,
+        "avg_return_per_trade": avg_ret,
+        "median_return_per_trade": med_ret,
+        "total_return_compounded": total_return,
+        "max_drawdown": mdd,
+        "sharpe_annualized_5m": sh,
+        "recent_win_rate_last_288_trades_or_less": recent_wr
+    }
+    return out
+
+def strategy_momentum(df, lookback=3, min_abs_move=0.0):
+    close = df["close"].astype("float64")
+    ret1 = close.pct_change()
+    mom = close.pct_change(lookback)
+    signal = np.sign(mom)
+    if min_abs_move and min_abs_move > 0:
+        signal = signal.where(mom.abs() >= min_abs_move, 0.0)
+    position = signal.shift(1).fillna(0.0).clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    return position, next_ret, (position != 0.0)
+
+def strategy_ma_cross(df, fast=8, slow=21, band=0.0008):
+    close = df["close"].astype("float64")
+    ret1 = close.pct_change()
+    f = close.rolling(fast, min_periods=fast).mean()
+    s = close.rolling(slow, min_periods=slow).mean()
+    diff = (f - s) / s
+    signal = np.sign(diff)
+    if band and band > 0:
+        signal = signal.where(diff.abs() >= band, 0.0)
+    position = signal.shift(1).fillna(0.0).clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    return position, next_ret, (position != 0.0)
+
+def strategy_volatility_breakout(df, vol_window=36, z=1.25):
+    close = df["close"].astype("float64")
+    ret1 = close.pct_change()
+    vol = ret1.rolling(vol_window, min_periods=vol_window).std(ddof=1)
+    cond = ret1.abs() > (z * vol)
+    signal = np.sign(ret1).where(cond, 0.0)
+    position = signal.shift(1).fillna(0.0).clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    trade_mask = signal.shift(1).fillna(0.0) != 0.0
+    return position, next_ret, trade_mask
+
+def choose_best(rows):
+    if not rows:
+        return None
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return None
+    df["ok"] = df["trades"].fillna(0).astype(int) >= 30
+    df["score"] = pd.to_numeric(df["sharpe_annualized_5m"], errors="coerce")
+    df.loc[~df["ok"], "score"] = np.nan
+    if df["score"].notna().any():
+        return rows[int(df["score"].idxmax())]
+    df["score2"] = pd.to_numeric(df["recent_win_rate_last_288_trades_or_less"], errors="coerce")
+    if df["score2"].notna().any():
+        return rows[int(df["score2"].idxmax())]
+    return rows[int(df["trades"].fillna(0).astype(int).idxmax())]
+
+def compute_directional_confidence(df, strat_name):
+    if strat_name == "momentum":
+        pos, nxt, tm = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+    elif strat_name == "ma_cross":
+        pos, nxt, tm = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+    elif strat_name == "vol_breakout":
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+    else:
+        return None
+
+    pos = pos.fillna(0.0)
+    nxt = nxt.fillna(0.0)
+    strat_ret = pos * nxt
+    trade_rets = strat_ret[tm.fillna(False)]
+    recent = trade_rets.tail(288)
+    use = recent if len(recent) >= 20 else trade_rets
+    if len(use) < 20:
+        return None
+    v = float((use > 0).mean())
+    return v if np.isfinite(v) else None
+
+def latest_signal(df, strat_name):
+    if strat_name == "momentum":
+        pos, nxt, tm = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+    elif strat_name == "ma_cross":
+        pos, nxt, tm = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+    elif strat_name == "vol_breakout":
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+    else:
+        return {"signal": "HOLD", "side": "NEUTRAL"}
+
+    p = float(pos.iloc[-1]) if len(pos) else 0.0
+    if p > 0:
+        return {"signal": "YES", "side": "UP"}
+    if p < 0:
+        return {"signal": "NO", "side": "DOWN"}
+    return {"signal": "HOLD", "side": "NEUTRAL"}
+
+def main():
+    out = {
+        "market": {
+            "url": POLYMARKET_URL,
+            "underlying_proxy": "binance_spot",
+            "symbol": SYMBOL,
+            "interval": INTERVAL
+        },
+        "backtest_summary": [],
+        "best_strategy": None,
+        "actionable_signals": None,
+        "errors": []
+    }
+
+    try:
+        df = fetch_binance_klines(SYMBOL, INTERVAL, target_bars=3000, limit=1000)
+        if df.empty or len(df) < 300:
+            raise RuntimeError(f"Insufficient data: {len(df)} bars")
+
+        out["market"]["data_start_utc"] = utc_iso(int(df["open_time"].iloc[0]))
+        out["market"]["data_end_utc"] = utc_iso(int(df["close_time"].iloc[-1]))
+        out["market"]["bars"] = int(len(df))
+        out["market"]["last_close"] = float(df["close"].iloc[-1])
+
+        summaries = []
+
+        pos, nxt, tm = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+        summaries.append(summarize_strategy("momentum", {"lookback_bars": 3, "min_abs_move": 0.0}, pos, nxt, tm))
+
+        pos, nxt, tm = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+        summaries.append(summarize_strategy("ma_cross", {"fast": 8, "slow": 21, "band": 0.0008}, pos, nxt, tm))
+
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+        summaries.append(summarize_strategy("vol_breakout", {"vol_window": 36, "z": 1.25}, pos, nxt, tm))
+
+        out["backtest_summary"] = summaries
+        best = choose_best(summaries)
+        out["best_strategy"] = best
+
+        if best:
+            strat_name = best["strategy"]
+            sig = latest_signal(df, strat_name)
+            sig["confidence"] = compute_directional_confidence(df, strat_name)
+            sig["timestamp_utc"] = utc_iso(int(df["close_time"].iloc[-1]))
+            sig["last_close"] = float(df["close"].iloc[-1])
+            sig["basis"] = {
+                "best_strategy": strat_name,
+                "best_strategy_sharpe_annualized_5m": best.get("sharpe_annualized_5m"),
+                "best_strategy_recent_win_rate": best.get("recent_win_rate_last_288_trades_or_less"),
+                "best_strategy_trades": best.get("trades")
+            }
+            out["actionable_signals"] = sig
+        else:
+            out["actionable_signals"] = {"signal": "HOLD", "side": "NEUTRAL", "confidence": None}
+
+    except Exception as e:
+        out["errors"].append({"type": type(e).__name__, "message": str(e), "trace": traceback.format_exc()})
+
+    print(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+
+if __name__ == "__main__":
+    main()
+
+
+[2026-02-25 18:39:28.063694]
+{"market":{"url":"https://polymarket.com/event/sol-updown-5m-1772027100","underlying_proxy":"binance_spot","symbol":"SOLUSDT","interval":"5m","data_start_utc":"2026-02-15T08:40:00+00:00","data_end_utc":"2026-02-25T18:39:59.999000+00:00","bars":3000,"last_close":88.99},"backtest_summary":[{"strategy":"momentum","params":{"lookback_bars":3,"min_abs_move":0.0},"bars":3000,"trades":2941,"wins":1345,"losses":1478,"ties":118,"win_rate":0.4573274396463788,"avg_return_per_trade":-6.87470626159379e-05,"median_return_per_trade":-0.00011591515011000197,"total_return_compounded":-0.18916131035518424,"max_drawdown":-0.21969933879533698,"sharpe_annualized_5m":-9.771878877947602,"recent_win_rate_last_288_trades_or_less":0.4791666666666667},{"strategy":"ma_cross","params":{"fast":8,"slow":21,"band":0.0008},"bars":3000,"trades":2325,"wins":1100,"losses":1139,"ties":86,"win_rate":0.4731182795698925,"avg_return_per_trade":-4.6640440966864e-05,"median_return_per_trade":0.0,"total_return_compounded":-0.10829612848517,"max_drawdown":-0.1832928431769254,"sharpe_annualized_5m":-5.771368698142033,"recent_win_rate_last_288_trades_or_less":0.5138888888888888},{"strategy":"vol_breakout","params":{"vol_window":36,"z":1.25},"bars":3000,"trades":523,"wins":217,"losses":286,"ties":20,"win_rate":0.4149139579349904,"avg_return_per_trade":-0.00016793055007017309,"median_return_per_trade":-0.0002348244687095935,"total_return_compounded":-0.08574350168129852,"max_drawdown":-0.1281688151152337,"sharpe_annualized_5m":-8.625868166298305,"recent_win_rate_last_288_trades_or_less":0.4513888888888889}],"best_strategy":{"strategy":"ma_cross","params":{"fast":8,"slow":21,"band":0.0008},"bars":3000,"trades":2325,"wins":1100,"losses":1139,"ties":86,"win_rate":0.4731182795698925,"avg_return_per_trade":-4.6640440966864e-05,"median_return_per_trade":0.0,"total_return_compounded":-0.10829612848517,"max_drawdown":-0.1832928431769254,"sharpe_annualized_5m":-5.771368698142033,"recent_win_rate_last_288_trades_or_less":0.5138888888888888},"actionable_signals":{"signal":"YES","side":"UP","confidence":0.5138888888888888,"timestamp_utc":"2026-02-25T18:39:59.999000+00:00","last_close":88.99,"basis":{"best_strategy":"ma_cross","best_strategy_sharpe_annualized_5m":-5.771368698142033,"best_strategy_recent_win_rate":0.5138888888888888,"best_strategy_trades":2325}},"errors":[]}
+
+
+[2026-02-25 18:40:40.975154]
+TASK:
+Task:
+CODE:
+import subprocess, sys, json, math, time, traceback, os
+from datetime import datetime, timezone
+from typing import Any, Dict, Optional, Tuple
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+for _pkg in ["requests", "pandas", "numpy"]:
+    install(_pkg)
+
+import requests
+import pandas as pd
+import numpy as np
+
+try:
+    import yfinance as yf  # optional
+except Exception:
+    yf = None
+
+BINANCE_BASE = "https://api.binance.com"
+PERIODS_PER_YEAR_5M = 365 * 24 * 12
+
+def utc_iso(ms: int) -> str:
+    return datetime.fromtimestamp(ms / 1000, tz=timezone.utc).isoformat()
+
+def now_utc_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+def http_get_json(url, params=None, headers=None, timeout=15, retries=6, backoff=0.8):
+    last_err = None
+    headers = headers or {"User-Agent": "Mozilla/5.0"}
+    for i in range(retries):
+        try:
+            r = requests.get(url, params=params, headers=headers, timeout=timeout)
+            if r.status_code == 429:
+                time.sleep(backoff * (2 ** i))
+                continue
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            last_err = e
+            time.sleep(backoff * (2 ** i))
+    raise last_err
+
+def fetch_binance_klines(symbol: str, interval: str, target_bars: int = 3000, limit: int = 1000) -> pd.DataFrame:
+    url = f"{BINANCE_BASE}/api/v3/klines"
+    end_time = int(time.time() * 1000)
+    all_rows = []
+    remaining = int(target_bars)
+    cur_end = end_time
+    while remaining > 0:
+        batch = min(limit, remaining)
+        params = {"symbol": symbol, "interval": interval, "limit": batch, "endTime": cur_end}
+        data = http_get_json(url, params=params)
+        if not isinstance(data, list) or len(data) == 0:
+            break
+        all_rows = data + all_rows
+        first_open = int(data[0][0])
+        cur_end = first_open - 1
+        remaining -= len(data)
+        if len(data) < batch:
+            break
+        time.sleep(0.08)
+
+    if not all_rows:
+        return pd.DataFrame(columns=["open_time", "open", "high", "low", "close", "volume", "close_time"])
+
+    df = pd.DataFrame(all_rows, columns=[
+        "open_time","open","high","low","close","volume",
+        "close_time","quote_asset_volume","num_trades",
+        "taker_buy_base_asset_volume","taker_buy_quote_asset_volume","ignore"
+    ])
+    df["open_time"] = pd.to_numeric(df["open_time"], errors="coerce").astype("Int64")
+    df["close_time"] = pd.to_numeric(df["close_time"], errors="coerce").astype("Int64")
+    for c in ["open","high","low","close","volume"]:
+        df[c] = pd.to_numeric(df[c], errors="coerce").astype("float64")
+    df = df.dropna(subset=["open_time","close_time","close"])
+    df["open_time"] = df["open_time"].astype("int64")
+    df["close_time"] = df["close_time"].astype("int64")
+    df = df[["open_time","open","high","low","close","volume","close_time"]].drop_duplicates(subset=["open_time"]).sort_values("open_time").reset_index(drop=True)
+    return df
+
+def compute_equity_curve(returns: pd.Series) -> pd.Series:
+    r = returns.replace([np.inf, -np.inf], np.nan).fillna(0.0).astype("float64")
+    return (1.0 + r).cumprod()
+
+def max_drawdown(equity_curve: pd.Series) -> float:
+    if equity_curve is None or len(equity_curve) == 0:
+        return 0.0
+    peak = equity_curve.cummax()
+    dd = (equity_curve / peak) - 1.0
+    v = float(dd.min())
+    return v if np.isfinite(v) else 0.0
+
+def sharpe_ratio(returns: pd.Series, periods_per_year: int = PERIODS_PER_YEAR_5M) -> float:
+    r = returns.replace([np.inf, -np.inf], np.nan).dropna().astype("float64")
+    if len(r) < 3:
+        return float("nan")
+    mu = float(r.mean())
+    sd = float(r.std(ddof=1))
+    if not np.isfinite(sd) or sd == 0.0:
+        return float("nan")
+    return float((mu / sd) * math.sqrt(periods_per_year))
+
+def summarize_strategy(name: str, params: Dict[str, Any], position: pd.Series, next_ret: pd.Series, trade_mask: Optional[pd.Series] = None) -> Dict[str, Any]:
+    position = position.replace([np.inf, -np.inf], np.nan).fillna(0.0).astype("float64")
+    next_ret = next_ret.replace([np.inf, -np.inf], np.nan).fillna(0.0).astype("float64")
+    strat_ret = position * next_ret
+
+    equity = compute_equity_curve(strat_ret)
+    mdd = max_drawdown(equity)
+    sh = sharpe_ratio(strat_ret)
+
+    if trade_mask is None:
+        trade_mask = position != 0.0
+    trade_mask = trade_mask.fillna(False)
+
+    trades = int(trade_mask.sum())
+    if trades > 0:
+        trade_rets = strat_ret[trade_mask]
+        wins = int((trade_rets > 0).sum())
+        losses = int((trade_rets < 0).sum())
+        ties = int((trade_rets == 0).sum())
+        win_rate = float(wins / trades) if trades else float("nan")
+        avg_ret = float(trade_rets.mean()) if len(trade_rets) else float("nan")
+        med_ret = float(trade_rets.median()) if len(trade_rets) else float("nan")
+        recent = trade_rets.tail(288)
+        recent_wr = float((recent > 0).mean()) if len(recent) else float("nan")
+    else:
+        wins = losses = ties = 0
+        win_rate = float("nan")
+        avg_ret = float("nan")
+        med_ret = float("nan")
+        recent_wr = float("nan")
+
+    total_return = float(equity.iloc[-1] - 1.0) if len(equity) else 0.0
+
+    return {
+        "strategy": name,
+        "params": params,
+        "bars": int(len(next_ret)),
+        "trades": trades,
+        "wins": wins,
+        "losses": losses,
+        "ties": ties,
+        "win_rate": win_rate,
+        "avg_return_per_trade": avg_ret,
+        "median_return_per_trade": med_ret,
+        "total_return_compounded": total_return,
+        "max_drawdown": mdd,
+        "sharpe_annualized_5m": sh,
+        "recent_win_rate_last_288_trades_or_less": recent_wr
+    }
+
+def strategy_momentum(df: pd.DataFrame, lookback: int = 3, min_abs_move: float = 0.0) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    close = df["close"].astype("float64")
+    ret1 = close.pct_change()
+    mom = close.pct_change(lookback)
+    signal = np.sign(mom)
+    if min_abs_move and min_abs_move > 0:
+        signal = signal.where(mom.abs() >= min_abs_move, 0.0)
+    position = signal.shift(1).fillna(0.0).clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    trade_mask = position != 0.0
+    return position, next_ret, trade_mask
+
+def strategy_ma_cross(df: pd.DataFrame, fast: int = 8, slow: int = 21, band: float = 0.0008) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    close = df["close"].astype("float64")
+    ret1 = close.pct_change()
+    f = close.rolling(fast, min_periods=fast).mean()
+    s = close.rolling(slow, min_periods=slow).mean()
+    diff = (f - s) / s
+    signal = np.sign(diff)
+    if band and band > 0:
+        signal = signal.where(diff.abs() >= band, 0.0)
+    position = signal.shift(1).fillna(0.0).clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    trade_mask = position != 0.0
+    return position, next_ret, trade_mask
+
+def strategy_volatility_breakout(df: pd.DataFrame, vol_window: int = 36, z: float = 1.25) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    close = df["close"].astype("float64")
+    ret1 = close.pct_change()
+    vol = ret1.rolling(vol_window, min_periods=vol_window).std(ddof=1)
+    cond = ret1.abs() > (z * vol)
+    signal = np.sign(ret1).where(cond, 0.0)
+    position = signal.shift(1).fillna(0.0).clip(-1, 1)
+    next_ret = ret1.shift(-1)
+    trade_mask = signal.shift(1).fillna(0.0) != 0.0
+    return position, next_ret, trade_mask
+
+def choose_best(rows):
+    if not rows:
+        return None
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return None
+    df["ok"] = df["trades"].fillna(0).astype(int) >= 30
+    df["score"] = pd.to_numeric(df["sharpe_annualized_5m"], errors="coerce")
+    df.loc[~df["ok"], "score"] = np.nan
+    if df["score"].notna().any():
+        return rows[int(df["score"].idxmax())]
+    df["score2"] = pd.to_numeric(df["recent_win_rate_last_288_trades_or_less"], errors="coerce")
+    if df["score2"].notna().any():
+        return rows[int(df["score2"].idxmax())]
+    return rows[int(df["trades"].fillna(0).astype(int).idxmax())]
+
+def compute_directional_confidence(df: pd.DataFrame, strat_name: str) -> Optional[float]:
+    if strat_name == "momentum":
+        pos, nxt, tm = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+    elif strat_name == "ma_cross":
+        pos, nxt, tm = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+    elif strat_name == "vol_breakout":
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+    else:
+        return None
+
+    pos = pos.fillna(0.0)
+    nxt = nxt.fillna(0.0)
+    strat_ret = pos * nxt
+    trade_rets = strat_ret[tm.fillna(False)]
+    recent = trade_rets.tail(288)
+    use = recent if len(recent) >= 20 else trade_rets
+    if len(use) < 20:
+        return None
+    v = float((use > 0).mean())
+    return v if np.isfinite(v) else None
+
+def latest_signal(df: pd.DataFrame, strat_name: str) -> Dict[str, Any]:
+    if strat_name == "momentum":
+        pos, nxt, tm = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+    elif strat_name == "ma_cross":
+        pos, nxt, tm = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+    elif strat_name == "vol_breakout":
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+    else:
+        return {"signal": "HOLD", "side": "NEUTRAL"}
+
+    p = float(pos.iloc[-1]) if len(pos) else 0.0
+    if p > 0:
+        return {"signal": "YES", "side": "UP"}
+    if p < 0:
+        return {"signal": "NO", "side": "DOWN"}
+    return {"signal": "HOLD", "side": "NEUTRAL"}
+
+def parse_polymarket_underlying(url: str) -> Optional[str]:
+    try:
+        s = (url or "").strip().lower()
+        if "polymarket.com/event/" not in s:
+            return None
+        slug = s.split("/event/", 1)[1].split("?", 1)[0].strip("/")
+        if not slug:
+            return None
+        base = slug.split("-", 1)[0]
+        base = "".join([c for c in base if c.isalnum()]).upper()
+        if not base:
+            return None
+        return base
+    except Exception:
+        return None
+
+def backtest_from_df(df: pd.DataFrame, market_meta: Dict[str, Any]) -> Dict[str, Any]:
+    out = {
+        "market": market_meta,
+        "backtest_summary": [],
+        "best_strategy": None,
+        "actionable_signals": None,
+        "errors": []
+    }
+    if df is None or df.empty or len(df) < 300:
+        out["errors"].append({"type": "InsufficientData", "message": f"Insufficient data: {0 if df is None else len(df)} bars"})
+        out["actionable_signals"] = {"signal": "HOLD", "side": "NEUTRAL", "confidence": None, "timestamp_utc": now_utc_iso()}
+        return out
+
+    try:
+        if "open_time" in df.columns and "close_time" in df.columns:
+            out["market"]["data_start_utc"] = utc_iso(int(df["open_time"].iloc[0]))
+            out["market"]["data_end_utc"] = utc_iso(int(df["close_time"].iloc[-1]))
+        out["market"]["bars"] = int(len(df))
+        out["market"]["last_close"] = float(df["close"].iloc[-1])
+
+        summaries = []
+        pos, nxt, tm = strategy_momentum(df, lookback=3, min_abs_move=0.0)
+        summaries.append(summarize_strategy("momentum", {"lookback_bars": 3, "min_abs_move": 0.0}, pos, nxt, tm))
+
+        pos, nxt, tm = strategy_ma_cross(df, fast=8, slow=21, band=0.0008)
+        summaries.append(summarize_strategy("ma_cross", {"fast": 8, "slow": 21, "band": 0.0008}, pos, nxt, tm))
+
+        pos, nxt, tm = strategy_volatility_breakout(df, vol_window=36, z=1.25)
+        summaries.append(summarize_strategy("vol_breakout", {"vol_window": 36, "z": 1.25}, pos, nxt, tm))
+
+        out["backtest_summary"] = summaries
+        best = choose_best(summaries)
+        out["best_strategy"] = best
+
+        if best:
+            strat_name = best["strategy"]
+            sig = latest_signal(df, strat_name)
+            sig["confidence"] = compute_directional_confidence(df, strat_name)
+            if "close_time" in df.columns:
+                sig["timestamp_utc"] = utc_iso(int(df["close_time"].iloc[-1]))
+            else:
+                sig["timestamp_utc"] = now_utc_iso()
+            sig["last_close"] = float(df["close"].iloc[-1])
+            sig["basis"] = {
+                "best_strategy": strat_name,
+                "best_strategy_sharpe_annualized_5m": best.get("sharpe_annualized_5m"),
+                "best_strategy_recent_win_rate": best.get("recent_win_rate_last_288_trades_or_less"),
+                "best_strategy_trades": best.get("trades")
+            }
+            out["actionable_signals"] = sig
+        else:
+            out["actionable_signals"] = {"signal": "HOLD", "side": "NEUTRAL", "confidence": None, "timestamp_utc": now_utc_iso()}
+    except Exception as e:
+        out["errors"].append({"type": type(e).__name__, "message": str(e), "trace": traceback.format_exc()})
+        out["actionable_signals"] = {"signal": "HOLD", "side": "NEUTRAL", "confidence": None, "timestamp_utc": now_utc_iso()}
+
+    return out
+
+def read_config() -> Dict[str, Any]:
+    cfg = {}
+    if len(sys.argv) > 1:
+        arg = " ".join(sys.argv[1:]).strip()
+        if arg:
+            try:
+                cfg = json.loads(arg)
+                if isinstance(cfg, dict):
+                    return cfg
+                cfg = {"task": str(cfg)}
+                return cfg
+            except Exception:
+                cfg = {"task": arg}
+                return cfg
+
+    try:
+        data = sys.stdin.read()
+    except Exception:
+        data = ""
+    data = (data or "").strip()
+    if not data:
+        return {}
+    try:
+        cfg = json.loads(data)
+        if isinstance(cfg, dict):
+            return cfg
+        return {"task": str(cfg)}
+    except Exception:
+        return {"task": data}
+
+def task_polymarket_5m(cfg: Dict[str, Any]) -> Dict[str, Any]:
+    url = cfg.get("url") or cfg.get("market_url") or "https://polymarket.com/event/sol-updown-5m-1772027100"
+    interval = cfg.get("interval") or "5m"
+    bars = int(cfg.get("bars") or cfg.get("target_bars") or 3000)
+    symbol = cfg.get("symbol")
+    if not symbol:
+        base = parse_polymarket_underlying(url) or "SOL"
+        quote = (cfg.get("quote") or "USDT").upper()
+        symbol = f"{base}{quote}"
+    df = fetch_binance_klines(symbol, interval, target_bars=bars, limit=1000)
+    market_meta = {"url": url, "underlying_proxy": "binance_spot", "symbol": symbol, "interval": interval}
+    return backtest_from_df(df, market_meta)
+
+def task_backtest_csv(cfg: Dict[str, Any]) -> Dict[str, Any]:
+    path = cfg.get("csv_path") or cfg.get("path")
+    if not path:
+        raise ValueError("csv_path is required for task backtest_csv")
+    df = pd.read_csv(path)
+    cols = {c.lower().strip(): c for c in df.columns}
+    close_col = cols.get("close")
+    if close_col is None:
+        raise ValueError("CSV must contain a 'close' column (case-insensitive)")
+    if "close" != close_col:
+        df = df.rename(columns={close_col: "close"})
+    if "open_time" in cols and cols["open_time"] != "open_time":
+        df = df.rename(columns={cols["open_time"]: "open_time"})
+    if "close_time" in cols and cols["close_time"] != "close_time":
+        df = df.rename(columns={cols["close_time"]: "close_time"})
+    df["close"] = pd.to_numeric(df["close"], errors="coerce")
+    df = df.dropna(subset=["close"]).reset_index(drop=True)
+    market_meta = {"source": "csv", "path": path, "interval": cfg.get("interval") or "5m"}
+    return backtest_from_df(df, market_meta)
+
+def task_stock_analysis(cfg: Dict[str, Any]) -> Dict[str, Any]:
+    install("yfinance")
+    install("pandas")
+    install("numpy")
+    global yf
+    import yfinance as yf  # noqa
+    ticker = (cfg.get("ticker") or cfg.get("symbol") or "AAPL").upper()
+    start = cfg.get("start") or "2020-01-01"
+    end = cfg.get("end") or None
+
+    data = yf.download(ticker, start=start, end=end, progress=False)
+    if hasattr(data.columns, 'levels'):
+        data.columns = data.columns.get_level_values(0)
+    if "Close" not in data.columns:
+        raise ValueError("Downloaded data missing Close column")
+    close = data["Close"].astype("float64")
+    ret = close.pct_change().dropna()
+    vol = float(ret.std(ddof=1) * np.sqrt(252)) if len(ret) else float("nan")
+    sh = float((ret.mean() / ret.std(ddof=1)) * np.sqrt(252)) if len(ret) and float(ret.std(ddof=1)) != 0.0 else float("nan")
+
+    out = {
+        "market": {"ticker": ticker, "start": start, "end": end, "bars": int(len(data))},
+        "metrics": {"annualized_volatility": vol, "sharpe_annualized_rf0": sh},
+        "errors": []
+    }
+    return out
+
+def main():
+    out = {"result": None, "errors": []}
+    try:
+        cfg = read_config()
+        task = (cfg.get("task") if isinstance(cfg, dict) else None) or ""
+        task_str = str(task).strip().lower()
+
+        if not task_str:
+            out["result"] = {
+                "error": "No task provided",
+                "accepted_tasks": ["polymarket_5m_backtest", "backtest_csv", "stock_analysis"],
+                "example_config_polymarket": {"task": "polymarket_5m_backtest", "url": "https://polymarket.com/event/sol-updown-5m-1772027100", "bars": 3000},
+                "example_config_csv": {"task": "backtest_csv", "csv_path": "data.csv", "interval": "5m"},
+                "example_config_stock": {"task": "stock_analysis", "ticker": "AAPL", "start": "2020-01-01"}
+            }
+            print(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+            return
+
+        if "polymarket" in task_str or "5m" in task_str:
+            res = task_polymarket_5m(cfg)
+        elif "csv" in task_str:
+            res = task_backtest_csv(cfg)
+        elif "stock" in task_str or "aapl" in task_str or "yfinance" in task_str:
+            res = task_stock_analysis(cfg)
+        else:
+            if isinstance(cfg, dict):
+                txt = (cfg.get("url") or cfg.get("market_url") or cfg.get("text") or cfg.get("query") or "").strip()
+            else:
+                txt = ""
+            if "polymarket.com/event/" in txt:
+                res = task_polymarket_5m({"task": "polymarket_5m_backtest", "url": txt})
+            else:
+                out["result"] = {"error": "Unknown task", "task": task}
+                print(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+                return
+
+        out["result"] = res
+    except Exception as e:
+        out["errors"].append({"type": type(e).__name__, "message": str(e), "trace": traceback.format_exc()})
+    print(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+
+if __name__ == "__main__":
+    main()
+
+
+[2026-02-25 18:45:36.951543]
+TASK:
+You are a trading assistant. I will provide you a JSON object containing backtest results for a market (5-min bars). Your task:
+CODE:
+import sys, json, math, re
+from datetime import datetime, timezone
+
+def now_utc_iso():
+    return datetime.now(timezone.utc).isoformat()
+
+def _to_float(x):
+    try:
+        if x is None:
+            return float("nan")
+        if isinstance(x, (int, float)):
+            return float(x)
+        s = str(x).strip()
+        if s == "":
+            return float("nan")
+        return float(s)
+    except Exception:
+        return float("nan")
+
+def _to_int(x, default=0):
+    try:
+        if x is None:
+            return default
+        if isinstance(x, bool):
+            return int(x)
+        if isinstance(x, int):
+            return x
+        if isinstance(x, float):
+            if math.isfinite(x):
+                return int(x)
+            return default
+        s = str(x).strip()
+        if s == "":
+            return default
+        return int(float(s))
+    except Exception:
+        return default
+
+def _is_finite(x):
+    try:
+        return x is not None and isinstance(x, (int, float)) and math.isfinite(x)
+    except Exception:
+        return False
+
+def read_input_json():
+    raw = ""
+    if len(sys.argv) > 1:
+        raw = " ".join(sys.argv[1:]).strip()
+    else:
+        try:
+            raw = sys.stdin.read()
+        except Exception:
+            raw = ""
+        raw = (raw or "").strip()
+
+    if not raw:
+        return None, "empty_input"
+
+    try:
+        obj = json.loads(raw)
+        return obj, None
+    except Exception:
+        pass
+
+    m = re.search(r'(\{.*\}|\[.*\])', raw, flags=re.DOTALL)
+    if m:
+        candidate = m.group(0)
+        try:
+            obj = json.loads(candidate)
+            return obj, None
+        except Exception:
+            return None, "invalid_json"
+    return None, "invalid_json"
+
+def unwrap_result(obj):
+    if isinstance(obj, dict) and "result" in obj and isinstance(obj["result"], (dict, list)):
+        return obj["result"]
+    return obj
+
+def normalize_summary_row(r):
+    if not isinstance(r, dict):
+        return None
+    out = dict(r)
+    out["strategy"] = str(out.get("strategy", "")).strip() or None
+    out["trades"] = _to_int(out.get("trades", 0), 0)
+    out["wins"] = _to_int(out.get("wins", 0), 0)
+    out["losses"] = _to_int(out.get("losses", 0), 0)
+    out["ties"] = _to_int(out.get("ties", 0), 0)
+    out["win_rate"] = _to_float(out.get("win_rate", float("nan")))
+    out["avg_return_per_trade"] = _to_float(out.get("avg_return_per_trade", float("nan")))
+    out["median_return_per_trade"] = _to_float(out.get("median_return_per_trade", float("nan")))
+    out["total_return_compounded"] = _to_float(out.get("total_return_compounded", float("nan")))
+    out["max_drawdown"] = _to_float(out.get("max_drawdown", float("nan")))
+    out["sharpe_annualized_5m"] = _to_float(out.get("sharpe_annualized_5m", float("nan")))
+    out["recent_win_rate_last_288_trades_or_less"] = _to_float(out.get("recent_win_rate_last_288_trades_or_less", float("nan")))
+    if out["strategy"] is None:
+        return None
+    return out
+
+def choose_best(summary_rows, min_trades=30):
+    if not summary_rows:
+        return None
+
+    rows = []
+    for r in summary_rows:
+        nr = normalize_summary_row(r)
+        if nr:
+            rows.append(nr)
+    if not rows:
+        return None
+
+    def score_row(rr):
+        trades = rr.get("trades", 0) or 0
+        ok = trades >= min_trades
+        sharpe = rr.get("sharpe_annualized_5m", float("nan"))
+        recent_wr = rr.get("recent_win_rate_last_288_trades_or_less", float("nan"))
+        total_ret = rr.get("total_return_compounded", float("nan"))
+
+        if ok and _is_finite(sharpe):
+            primary = sharpe
+        else:
+            primary = float("-inf")
+
+        if _is_finite(recent_wr):
+            secondary = recent_wr
+        else:
+            secondary = float("-inf")
+
+        if _is_finite(total_ret):
+            tertiary = total_ret
+        else:
+            tertiary = float("-inf")
+
+        return (primary, secondary, tertiary, trades)
+
+    best = max(rows, key=score_row)
+    return best
+
+def sort_strategies(summary_rows):
+    rows = []
+    for r in summary_rows or []:
+        nr = normalize_summary_row(r)
+        if nr:
+            rows.append(nr)
+
+    def sort_key(rr):
+        sharpe = rr.get("sharpe_annualized_5m", float("nan"))
+        recent_wr = rr.get("recent_win_rate_last_288_trades_or_less", float("nan"))
+        trades = rr.get("trades", 0) or 0
+        total_ret = rr.get("total_return_compounded", float("nan"))
+
+        sharpe_k = sharpe if _is_finite(sharpe) else float("-inf")
+        recent_k = recent_wr if _is_finite(recent_wr) else float("-inf")
+        total_k = total_ret if _is_finite(total_ret) else float("-inf")
+        return (sharpe_k, recent_k, total_k, trades)
+
+    rows_sorted = sorted(rows, key=sort_key, reverse=True)
+    return rows_sorted
+
+def clamp01(x):
+    try:
+        if not _is_finite(x):
+            return None
+        return max(0.0, min(1.0, float(x)))
+    except Exception:
+        return None
+
+def derive_actionable_signal(payload, best):
+    sig = None
+    if isinstance(payload, dict):
+        sig = payload.get("actionable_signals")
+        if isinstance(sig, dict):
+            out = dict(sig)
+            if "timestamp_utc" not in out or not out["timestamp_utc"]:
+                out["timestamp_utc"] = now_utc_iso()
+            if "signal" not in out or not out["signal"]:
+                out["signal"] = "HOLD"
+            if "side" not in out or not out["side"]:
+                out["side"] = "NEUTRAL"
+            if "confidence" in out:
+                out["confidence"] = clamp01(_to_float(out.get("confidence")))
+            else:
+                out["confidence"] = None
+            if isinstance(best, dict):
+                out.setdefault("basis", {})
+                if isinstance(out["basis"], dict):
+                    out["basis"].setdefault("best_strategy", best.get("strategy"))
+                    out["basis"].setdefault("best_strategy_sharpe_annualized_5m", best.get("sharpe_annualized_5m"))
+                    out["basis"].setdefault("best_strategy_recent_win_rate", best.get("recent_win_rate_last_288_trades_or_less"))
+                    out["basis"].setdefault("best_strategy_trades", best.get("trades"))
+            return out
+
+    signal = "HOLD"
+    side = "NEUTRAL"
+    confidence = None
+
+    if isinstance(best, dict):
+        sharpe = best.get("sharpe_annualized_5m", float("nan"))
+        recent_wr = best.get("recent_win_rate_last_288_trades_or_less", float("nan"))
+        total_ret = best.get("total_return_compounded", float("nan"))
+
+        if _is_finite(sharpe) and sharpe > 0 and _is_finite(recent_wr) and recent_wr >= 0.52:
+            signal = "YES"
+            side = "UP"
+            confidence = clamp01(recent_wr)
+        elif _is_finite(sharpe) and sharpe < 0 and _is_finite(recent_wr) and recent_wr <= 0.48:
+            signal = "NO"
+            side = "DOWN"
+            confidence = clamp01(1.0 - recent_wr)
+        else:
+            if _is_finite(recent_wr):
+                confidence = clamp01(recent_wr)
+            else:
+                confidence = None
+
+        if _is_finite(total_ret) and total_ret < 0 and signal != "HOLD":
+            confidence = clamp01((confidence if confidence is not None else 0.5) * 0.85)
+
+    return {
+        "signal": signal,
+        "side": side,
+        "confidence": confidence,
+        "timestamp_utc": now_utc_iso(),
+        "basis": {
+            "best_strategy": best.get("strategy") if isinstance(best, dict) else None,
+            "best_strategy_sharpe_annualized_5m": best.get("sharpe_annualized_5m") if isinstance(best, dict) else None,
+            "best_strategy_recent_win_rate": best.get("recent_win_rate_last_288_trades_or_less") if isinstance(best, dict) else None,
+            "best_strategy_trades": best.get("trades") if isinstance(best, dict) else None
+        }
+    }
+
+def sanity_flags(market, summary_sorted, best, actionable):
+    flags = []
+
+    if not summary_sorted:
+        flags.append({"type": "NoBacktestSummary", "message": "Missing or empty backtest_summary"})
+
+    if isinstance(best, dict):
+        trades = best.get("trades", 0) or 0
+        if trades < 30:
+            flags.append({"type": "LowTrades", "message": "Best strategy has fewer than 30 trades", "trades": trades})
+
+        sharpe = best.get("sharpe_annualized_5m", float("nan"))
+        if _is_finite(sharpe) and sharpe < 0:
+            flags.append({"type": "NegativeSharpe", "message": "Best strategy Sharpe is negative", "sharpe_annualized_5m": sharpe})
+
+        total_ret = best.get("total_return_compounded", float("nan"))
+        if _is_finite(total_ret) and total_ret < 0:
+            flags.append({"type": "NegativeTotalReturn", "message": "Best strategy compounded return is negative", "total_return_compounded": total_ret})
+
+    if isinstance(actionable, dict):
+        conf = actionable.get("confidence", None)
+        if conf is not None and (_to_float(conf) < 0.5):
+            flags.append({"type": "LowConfidence", "message": "Signal confidence below 0.5", "confidence": conf})
+
+    if isinstance(market, dict):
+        bars = market.get("bars")
+        if bars is not None:
+            b = _to_int(bars, 0)
+            if b and b < 300:
+                flags.append({"type": "InsufficientBars", "message": "Fewer than 300 bars may be unreliable", "bars": b})
+
+    return flags
+
+def main():
+    obj, err = read_input_json()
+    if err:
+        out = {
+            "backtest_summary": [],
+            "best_strategy": None,
+            "actionable_signals": {"signal": "HOLD", "side": "NEUTRAL", "confidence": None, "timestamp_utc": now_utc_iso()},
+            "flags": [{"type": "InputError", "message": err}],
+            "errors": [{"type": "InputError", "message": err}],
+            "timestamp_utc": now_utc_iso()
+        }
+        sys.stdout.write(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+        return
+
+    payload = unwrap_result(obj)
+    market = {}
+    if isinstance(payload, dict) and isinstance(payload.get("market"), dict):
+        market = payload.get("market") or {}
+    else:
+        market = {}
+
+    summary = []
+    if isinstance(payload, dict) and isinstance(payload.get("backtest_summary"), list):
+        summary = payload.get("backtest_summary") or []
+    elif isinstance(payload, dict) and isinstance(payload.get("summary"), list):
+        summary = payload.get("summary") or []
+    else:
+        summary = []
+
+    summary_sorted = sort_strategies(summary)
+    best = choose_best(summary_sorted, min_trades=30)
+
+    actionable = derive_actionable_signal(payload if isinstance(payload, dict) else {}, best if isinstance(best, dict) else {})
+
+    out = {
+        "market": market,
+        "backtest_summary_sorted": summary_sorted,
+        "best_strategy": best,
+        "actionable_signals": actionable,
+        "flags": sanity_flags(market, summary_sorted, best, actionable),
+        "timestamp_utc": now_utc_iso()
+    }
+
+    sys.stdout.write(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+
+if __name__ == "__main__":
+    main()
+
+
+[2026-02-25 18:53:36.822352]
+TASK:
+You are a trading assistant. I will provide you a JSON object containing backtest results for a market (5-min bars). Your task:
+CODE:
+
+
+[2026-02-25 18:53:36.837357]
+
+
+[2026-02-25 18:53:36.918416]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:36.932736]
+
+
+[2026-02-25 18:53:37.126610]
+TASK:
+1. Summarize the backtest results in a **clear table**, showing:
+CODE:
+
+
+[2026-02-25 18:53:37.157455]
+
+
+[2026-02-25 18:53:37.223492]
+TASK:
+   - Strategy name
+CODE:
+
+
+[2026-02-25 18:53:37.238856]
+
+
+[2026-02-25 18:53:37.299065]
+TASK:
+   - Win rate
+CODE:
+
+
+[2026-02-25 18:53:37.314247]
+
+
+[2026-02-25 18:53:37.406521]
+TASK:
+   - Average return per trade
+CODE:
+
+
+[2026-02-25 18:53:37.428016]
+
+
+[2026-02-25 18:53:37.511289]
+TASK:
+   - Total compounded return
+CODE:
+
+
+[2026-02-25 18:53:37.525490]
+
+
+[2026-02-25 18:53:37.606724]
+TASK:
+   - Sharpe ratio
+CODE:
+
+
+[2026-02-25 18:53:37.624770]
+
+
+[2026-02-25 18:53:37.741150]
+TASK:
+   - Max drawdown
+CODE:
+
+
+[2026-02-25 18:53:37.757208]
+
+
+[2026-02-25 18:53:37.820464]
+TASK:
+   - Recent win rate
+CODE:
+
+
+[2026-02-25 18:53:37.835930]
+
+
+[2026-02-25 18:53:37.932348]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:37.948103]
+
+
+[2026-02-25 18:53:38.029692]
+TASK:
+2. Highlight the **best strategy**, including why it is the best and any caveats.
+CODE:
+
+
+[2026-02-25 18:53:38.046658]
+
+
+[2026-02-25 18:53:38.124660]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:38.138799]
+
+
+[2026-02-25 18:53:38.201858]
+TASK:
+3. Generate **actionable signals** summary, e.g., whether the JSON suggests going UP or DOWN, with confidence.
+CODE:
+
+
+[2026-02-25 18:53:38.219684]
+
+
+[2026-02-25 18:53:38.309225]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:38.324365]
+
+
+[2026-02-25 18:53:38.399581]
+TASK:
+4. Provide **visual plots**:
+CODE:
+
+
+[2026-02-25 18:53:38.415418]
+
+
+[2026-02-25 18:53:38.501682]
+TASK:
+   - Line chart of **cumulative returns** per strategy.
+CODE:
+
+
+[2026-02-25 18:53:38.518451]
+
+
+[2026-02-25 18:53:38.604496]
+TASK:
+   - Bar chart of **win rates** per strategy.
+CODE:
+
+
+[2026-02-25 18:53:38.620518]
+
+
+[2026-02-25 18:53:38.722814]
+TASK:
+   - Highlight recent performance trends.
+CODE:
+
+
+[2026-02-25 18:53:38.738066]
+
+
+[2026-02-25 18:53:38.833098]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:38.847350]
+
+
+[2026-02-25 18:53:38.936819]
+TASK:
+5. Make it **easy to digest**, include a short textual summary with bullet points.
+CODE:
+
+
+[2026-02-25 18:53:38.951780]
+
+
+[2026-02-25 18:53:39.017672]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:39.033716]
+
+
+[2026-02-25 18:53:39.117555]
+TASK:
+Here is the JSON:
+CODE:
+
+
+[2026-02-25 18:53:39.134039]
+
+
+[2026-02-25 18:53:39.230199]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:53:39.247509]
+
+
+[2026-02-25 18:53:39.316979]
+TASK:
+{
+CODE:
+
+
+[2026-02-25 18:53:39.333306]
+
+
+[2026-02-25 18:53:39.392824]
+TASK:
+  "market": {
+CODE:
+
+
+[2026-02-25 18:53:39.407436]
+
+
+[2026-02-25 18:53:39.471461]
+TASK:
+    "url": "https://polymarket.com/event/sol-updown-5m-1772027100",
+CODE:
+
+
+[2026-02-25 18:53:39.489190]
+
+
+[2026-02-25 18:53:39.565417]
+TASK:
+    "underlying_proxy": "binance_spot",
+CODE:
+
+
+[2026-02-25 18:53:39.580375]
+
+
+[2026-02-25 18:53:39.648956]
+TASK:
+    "symbol": "SOLUSDT",
+CODE:
+
+
+[2026-02-25 18:53:39.669110]
+
+
+[2026-02-25 18:53:39.745341]
+TASK:
+    "interval": "5m",
+CODE:
+
+
+[2026-02-25 18:53:39.760203]
+
+
+[2026-02-25 18:53:39.828885]
+TASK:
+    "data_start_utc": "2026-02-15T08:40:00+00:00",
+CODE:
+
+
+[2026-02-25 18:53:39.847453]
+
+
+[2026-02-25 18:53:39.926923]
+TASK:
+    "data_end_utc": "2026-02-25T18:39:59.999000+00:00",
+CODE:
+
+
+[2026-02-25 18:53:39.941711]
+
+
+[2026-02-25 18:53:40.002641]
+TASK:
+    "bars": 3000
+CODE:
+
+
+[2026-02-25 18:53:40.020386]
+
+
+[2026-02-25 18:53:40.106234]
+TASK:
+  },
+CODE:
+
+
+[2026-02-25 18:53:40.121514]
+
+
+[2026-02-25 18:53:40.178761]
+TASK:
+  "backtest_summary": [
+CODE:
+
+
+[2026-02-25 18:53:40.193536]
+
+
+[2026-02-25 18:53:40.261171]
+TASK:
+    {
+CODE:
+
+
+[2026-02-25 18:53:40.275165]
+
+
+[2026-02-25 18:53:40.340379]
+TASK:
+      "strategy": "momentum",
+CODE:
+
+
+[2026-02-25 18:53:40.390839]
+
+
+[2026-02-25 18:53:40.551953]
+TASK:
+      "params": {"lookback_bars": 3, "min_abs_move": 0.0},
+CODE:
+
+
+[2026-02-25 18:53:40.567732]
+
+
+[2026-02-25 18:53:40.663232]
+TASK:
+      "bars": 3000,
+CODE:
+
+
+[2026-02-25 18:53:40.680730]
+
+
+[2026-02-25 18:53:40.759796]
+TASK:
+      "trades": 2941,
+CODE:
+
+
+[2026-02-25 18:53:40.777034]
+
+
+[2026-02-25 18:53:40.856843]
+TASK:
+      "wins": 1345,
+CODE:
+
+
+[2026-02-25 18:53:40.871169]
+
+
+[2026-02-25 18:53:40.964606]
+TASK:
+      "losses": 1478,
+CODE:
+
+
+[2026-02-25 18:53:40.981539]
+
+
+[2026-02-25 18:53:41.047300]
+TASK:
+      "ties": 118,
+CODE:
+
+
+[2026-02-25 18:53:41.067811]
+
+
+[2026-02-25 18:53:41.139829]
+TASK:
+      "win_rate": 0.4573274396463788,
+CODE:
+
+
+[2026-02-25 18:53:41.157869]
+
+
+[2026-02-25 18:55:05.954450]
+TASK:
+You are a trading assistant. I will provide you a JSON object containing backtest results for a market (5-min bars). Your task:
+CODE:
+import sys, json, math, re, subprocess
+from datetime import datetime, timezone
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+for pkg in ["pandas", "numpy", "matplotlib"]:
+    install(pkg)
+
+import pandas as pd
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+def now_utc_iso():
+    return datetime.now(timezone.utc).isoformat()
+
+def _to_float(x):
+    try:
+        if x is None:
+            return float("nan")
+        if isinstance(x, (int, float)) and not isinstance(x, bool):
+            return float(x)
+        s = str(x).strip()
+        if not s:
+            return float("nan")
+        return float(s)
+    except Exception:
+        return float("nan")
+
+def _to_int(x, default=0):
+    try:
+        if x is None:
+            return default
+        if isinstance(x, bool):
+            return int(x)
+        if isinstance(x, int):
+            return x
+        if isinstance(x, float):
+            return int(x) if math.isfinite(x) else default
+        s = str(x).strip()
+        if not s:
+            return default
+        return int(float(s))
+    except Exception:
+        return default
+
+def _is_finite(x):
+    try:
+        return isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(float(x))
+    except Exception:
+        return False
+
+def read_input_text():
+    if len(sys.argv) > 1:
+        return " ".join(sys.argv[1:]).strip()
+    try:
+        return (sys.stdin.read() or "").strip()
+    except Exception:
+        return ""
+
+def parse_json_loose(raw):
+    if not raw:
+        return None, "empty_input"
+    try:
+        return json.loads(raw), None
+    except Exception:
+        pass
+    m = re.search(r'(\{.*\}|\[.*\])', raw, flags=re.DOTALL)
+    if m:
+        cand = m.group(0)
+        try:
+            return json.loads(cand), None
+        except Exception:
+            return None, "invalid_json"
+    return None, "invalid_json"
+
+def unwrap_result(obj):
+    if isinstance(obj, dict) and "result" in obj and isinstance(obj["result"], (dict, list)):
+        return obj["result"]
+    return obj
+
+def normalize_summary_row(r):
+    if not isinstance(r, dict):
+        return None
+    out = dict(r)
+    out["strategy"] = str(out.get("strategy", "")).strip() or None
+    if out["strategy"] is None:
+        return None
+    out["trades"] = _to_int(out.get("trades"), 0)
+    out["wins"] = _to_int(out.get("wins"), 0)
+    out["losses"] = _to_int(out.get("losses"), 0)
+    out["ties"] = _to_int(out.get("ties"), 0)
+    out["win_rate"] = _to_float(out.get("win_rate"))
+    out["avg_return_per_trade"] = _to_float(out.get("avg_return_per_trade"))
+    out["median_return_per_trade"] = _to_float(out.get("median_return_per_trade"))
+    out["total_return_compounded"] = _to_float(out.get("total_return_compounded"))
+    out["max_drawdown"] = _to_float(out.get("max_drawdown"))
+    out["sharpe_annualized_5m"] = _to_float(out.get("sharpe_annualized_5m"))
+    out["recent_win_rate"] = _to_float(out.get("recent_win_rate_last_288_trades_or_less"))
+    params = out.get("params")
+    if not isinstance(params, dict):
+        out["params"] = {}
+    return out
+
+def pick_best(rows, min_trades=30):
+    if not rows:
+        return None, "no_rows"
+    r = [normalize_summary_row(x) for x in rows]
+    r = [x for x in r if x is not None]
+    if not r:
+        return None, "no_valid_rows"
+
+    def key(x):
+        trades = x.get("trades", 0) or 0
+        ok = trades >= min_trades
+        sharpe = x.get("sharpe_annualized_5m", float("nan"))
+        recent = x.get("recent_win_rate", float("nan"))
+        total = x.get("total_return_compounded", float("nan"))
+        sharpe_k = sharpe if (ok and _is_finite(sharpe)) else float("-inf")
+        recent_k = recent if _is_finite(recent) else float("-inf")
+        total_k = total if _is_finite(total) else float("-inf")
+        return (sharpe_k, recent_k, total_k, trades)
+
+    best = max(r, key=key)
+    reason = []
+    if _is_finite(best.get("sharpe_annualized_5m", float("nan"))) and best.get("trades", 0) >= min_trades:
+        reason.append("highest_sharpe_among_min_trades")
+    else:
+        reason.append("fallback_to_recent_win_rate_or_total_return")
+    return best, ",".join(reason)
+
+def derive_signal(payload, best):
+    sig = None
+    if isinstance(payload, dict) and isinstance(payload.get("actionable_signals"), dict):
+        sig = dict(payload["actionable_signals"])
+    if sig is None:
+        sig = {}
+    signal = str(sig.get("signal") or "").strip().upper()
+    side = str(sig.get("side") or "").strip().upper()
+    confidence = sig.get("confidence", None)
+
+    if not signal:
+        signal = "HOLD"
+    if not side:
+        side = "NEUTRAL"
+
+    if signal not in ("YES", "NO", "HOLD"):
+        signal = "HOLD"
+    if side not in ("UP", "DOWN", "NEUTRAL"):
+        side = "NEUTRAL"
+
+    if confidence is not None:
+        cf = _to_float(confidence)
+        if _is_finite(cf):
+            confidence = max(0.0, min(1.0, float(cf)))
+        else:
+            confidence = None
+
+    if (signal, side) == ("HOLD", "NEUTRAL") and isinstance(best, dict):
+        sharpe = best.get("sharpe_annualized_5m", float("nan"))
+        recent = best.get("recent_win_rate", float("nan"))
+        total = best.get("total_return_compounded", float("nan"))
+        trades = best.get("trades", 0) or 0
+
+        if _is_finite(recent):
+            base_conf = max(0.0, min(1.0, 0.5 + 2.0 * (recent - 0.5)))
+        else:
+            base_conf = None
+
+        if trades >= 30 and _is_finite(sharpe) and _is_finite(recent):
+            if sharpe > 0 and recent >= 0.52:
+                signal, side = "YES", "UP"
+                confidence = base_conf
+            elif sharpe < 0 and recent <= 0.48:
+                signal, side = "NO", "DOWN"
+                confidence = (1.0 - base_conf) if base_conf is not None else None
+            else:
+                confidence = base_conf
+        else:
+            confidence = base_conf
+
+        if _is_finite(total) and total < 0 and signal != "HOLD" and confidence is not None:
+            confidence = max(0.0, min(1.0, confidence * 0.85))
+
+    ts = sig.get("timestamp_utc") or (payload.get("market", {}) or {}).get("data_end_utc") if isinstance(payload, dict) else None
+    ts = ts or now_utc_iso()
+
+    out = {
+        "signal": signal,
+        "side": side,
+        "confidence": confidence,
+        "timestamp_utc": ts,
+        "basis": {
+            "best_strategy": best.get("strategy") if isinstance(best, dict) else None,
+            "best_strategy_sharpe_annualized_5m": best.get("sharpe_annualized_5m") if isinstance(best, dict) else None,
+            "best_strategy_recent_win_rate": best.get("recent_win_rate") if isinstance(best, dict) else None,
+            "best_strategy_trades": best.get("trades") if isinstance(best, dict) else None,
+        }
+    }
+    return out
+
+def make_table(summary_rows):
+    r = [normalize_summary_row(x) for x in (summary_rows or [])]
+    r = [x for x in r if x is not None]
+    if not r:
+        return pd.DataFrame(columns=["strategy","trades","win_rate","avg_return_per_trade","total_return_compounded","sharpe_annualized_5m","max_drawdown","recent_win_rate","params"])
+
+    df = pd.DataFrame(r)
+    def fmt_pct(x):
+        if not _is_finite(x):
+            return ""
+        return f"{100.0*float(x):.2f}%"
+    def fmt_num(x, nd=4):
+        if not _is_finite(x):
+            return ""
+        return f"{float(x):.{nd}f}"
+    def fmt_ret(x):
+        if not _is_finite(x):
+            return ""
+        return f"{100.0*float(x):.2f}%"
+
+    out = pd.DataFrame({
+        "strategy": df["strategy"],
+        "trades": df["trades"].astype(int),
+        "win_rate": df["win_rate"].map(fmt_pct),
+        "avg_return_per_trade": df["avg_return_per_trade"].map(lambda v: fmt_ret(v) if _is_finite(v) else ""),
+        "total_compounded_return": df["total_return_compounded"].map(lambda v: fmt_ret(v) if _is_finite(v) else ""),
+        "sharpe_annualized_5m": df["sharpe_annualized_5m"].map(lambda v: fmt_num(v, 3)),
+        "max_drawdown": df["max_drawdown"].map(lambda v: fmt_ret(v) if _is_finite(v) else ""),
+        "recent_win_rate": df["recent_win_rate"].map(fmt_pct),
+        "params": df["params"].map(lambda p: json.dumps(p, ensure_ascii=False, separators=(",", ":")) if isinstance(p, dict) else "")
+    })
+
+    def sort_key(i):
+        try:
+            rr = r[i]
+            sharpe = rr.get("sharpe_annualized_5m", float("nan"))
+            recent = rr.get("recent_win_rate", float("nan"))
+            total = rr.get("total_return_compounded", float("nan"))
+            trades = rr.get("trades", 0) or 0
+            sharpe_k = float(sharpe) if _is_finite(sharpe) else float("-inf")
+            recent_k = float(recent) if _is_finite(recent) else float("-inf")
+            total_k = float(total) if _is_finite(total) else float("-inf")
+            return (sharpe_k, recent_k, total_k, trades)
+        except Exception:
+            return (float("-inf"), float("-inf"), float("-inf"), 0)
+
+    order = sorted(range(len(r)), key=sort_key, reverse=True)
+    out = out.iloc[order].reset_index(drop=True)
+    return out, r
+
+def plot_outputs(market, rows_norm, out_dir="plots"):
+    os_ok = True
+    try:
+        import os
+        os.makedirs(out_dir, exist_ok=True)
+    except Exception:
+        os_ok = False
+        out_dir = "."
+
+    if not rows_norm:
+        return {"plots": [], "out_dir": out_dir}
+
+    bars = None
+    if isinstance(market, dict):
+        bars = market.get("bars", None)
+    bars = _to_int(bars, 0)
+    if bars <= 0:
+        bars = 3000
+
+    strategies = [x.get("strategy") for x in rows_norm]
+    win = [x.get("win_rate") for x in rows_norm]
+    recent = [x.get("recent_win_rate") for x in rows_norm]
+    sharpe = [x.get("sharpe_annualized_5m") for x in rows_norm]
+    total = [x.get("total_return_compounded") for x in rows_norm]
+    mdd = [x.get("max_drawdown") for x in rows_norm]
+
+    plots = []
+
+    try:
+        x = np.arange(len(strategies))
+        width = 0.42
+        fig = plt.figure(figsize=(11, 5.2), dpi=140)
+        ax = fig.add_subplot(111)
+        win_v = [float(v) if _is_finite(v) else np.nan for v in win]
+        rec_v = [float(v) if _is_finite(v) else np.nan for v in recent]
+        ax.bar(x - width/2, win_v, width, label="win_rate")
+        ax.bar(x + width/2, rec_v, width, label="recent_win_rate")
+        ax.set_xticks(x)
+        ax.set_xticklabels(strategies, rotation=20, ha="right")
+        ax.set_ylim(0.0, 1.0)
+        ax.set_title("Win rate vs recent win rate (per strategy)")
+        ax.grid(True, axis="y", alpha=0.25)
+        ax.legend(loc="best")
+        fig.tight_layout()
+        p1 = f"{out_dir}/win_rates.png"
+        fig.savefig(p1)
+        plt.close(fig)
+        plots.append({"type": "bar", "path": p1})
+    except Exception:
+        try:
+            plt.close("all")
+        except Exception:
+            pass
+
+    try:
+        fig = plt.figure(figsize=(11, 5.2), dpi=140)
+        ax = fig.add_subplot(111)
+        x = np.arange(len(strategies))
+        s_v = [float(v) if _is_finite(v) else np.nan for v in sharpe]
+        ax.bar(x, s_v, color="#4c72b0")
+        ax.axhline(0, color="black", linewidth=1)
+        ax.set_xticks(x)
+        ax.set_xticklabels(strategies, rotation=20, ha="right")
+        ax.set_title("Sharpe (annualized, 5m) per strategy")
+        ax.grid(True, axis="y", alpha=0.25)
+        fig.tight_layout()
+        p2 = f"{out_dir}/sharpe.png"
+        fig.savefig(p2)
+        plt.close(fig)
+        plots.append({"type": "bar", "path": p2})
+    except Exception:
+        try:
+            plt.close("all")
+        except Exception:
+            pass
+
+    try:
+        t = np.arange(bars)
+        fig = plt.figure(figsize=(11, 5.6), dpi=140)
+        ax = fig.add_subplot(111)
+        for i, st in enumerate(strategies):
+            tr = total[i]
+            if not _is_finite(tr):
+                continue
+            end_equity = 1.0 + float(tr)
+            curve = np.linspace(1.0, max(1e-9, end_equity), bars)
+            ax.plot(t, curve, label=st, linewidth=1.6)
+        ax.set_title("Synthetic cumulative equity (linear interpolation to total compounded return)")
+        ax.set_xlabel("bar")
+        ax.set_ylabel("equity (start=1.0)")
+        ax.grid(True, alpha=0.25)
+        ax.legend(loc="best")
+        fig.tight_layout()
+        p3 = f"{out_dir}/cumulative_returns_synthetic.png"
+        fig.savefig(p3)
+        plt.close(fig)
+        plots.append({"type": "line", "path": p3})
+    except Exception:
+        try:
+            plt.close("all")
+        except Exception:
+            pass
+
+    try:
+        fig = plt.figure(figsize=(11, 5.2), dpi=140)
+        ax = fig.add_subplot(111)
+        x = np.arange(len(strategies))
+        mdd_v = [float(v) if _is_finite(v) else np.nan for v in mdd]
+        ax.bar(x, mdd_v, color="#dd8452")
+        ax.axhline(0, color="black", linewidth=1)
+        ax.set_xticks(x)
+        ax.set_xticklabels(strategies, rotation=20, ha="right")
+        ax.set_title("Max drawdown per strategy")
+        ax.grid(True, axis="y", alpha=0.25)
+        fig.tight_layout()
+        p4 = f"{out_dir}/max_drawdown.png"
+        fig.savefig(p4)
+        plt.close(fig)
+        plots.append({"type": "bar", "path": p4})
+    except Exception:
+        try:
+            plt.close("all")
+        except Exception:
+            pass
+
+    return {"plots": plots, "out_dir": out_dir}
+
+def best_strategy_notes(best, reason):
+    if not isinstance(best, dict):
+        return {"why_best": [], "caveats": ["No valid strategy rows to select from."]}
+    why = []
+    caveats = []
+
+    trades = best.get("trades", 0) or 0
+    sharpe = best.get("sharpe_annualized_5m", float("nan"))
+    total = best.get("total_return_compounded", float("nan"))
+    recent = best.get("recent_win_rate", float("nan"))
+    win = best.get("win_rate", float("nan"))
+    mdd = best.get("max_drawdown", float("nan"))
+
+    why.append(f"Selection: {reason}")
+    if _is_finite(sharpe):
+        why.append(f"Sharpe (annualized, 5m): {float(sharpe):.3f}")
+    if _is_finite(recent):
+        why.append(f"Recent win rate: {100.0*float(recent):.2f}%")
+    if _is_finite(win):
+        why.append(f"Overall win rate: {100.0*float(win):.2f}%")
+    why.append(f"Trades: {int(trades)}")
+
+    if trades < 200:
+        caveats.append("Low trade count can make metrics unstable.")
+    if _is_finite(sharpe) and float(sharpe) < 0:
+        caveats.append("Negative Sharpe: risk-adjusted performance is unfavorable on this sample.")
+    if _is_finite(total) and float(total) < 0:
+        caveats.append("Negative total compounded return on this sample.")
+    if _is_finite(mdd) and float(mdd) < -0.15:
+        caveats.append("Large max drawdown observed.")
+    if _is_finite(recent) and abs(float(recent) - 0.5) < 0.02:
+        caveats.append("Recent win rate near 50%: weak edge signal.")
+
+    if not caveats:
+        caveats.append("No major caveats detected from summary stats alone (still sample-dependent).")
+
+    return {"why_best": why, "caveats": caveats}
+
+def main():
+    raw = read_input_text()
+    obj, err = parse_json_loose(raw)
+    if err:
+        out = {
+            "error": err,
+            "timestamp_utc": now_utc_iso(),
+            "expected_fields": ["market", "backtest_summary", "actionable_signals(optional)"],
+            "example_minimal_input": {
+                "market": {"url": "https://...", "interval": "5m", "bars": 3000},
+                "backtest_summary": [
+                    {"strategy": "ma_cross", "trades": 100, "win_rate": 0.52, "avg_return_per_trade": 0.0001, "total_return_compounded": 0.05, "sharpe_annualized_5m": 1.2, "max_drawdown": -0.03, "recent_win_rate_last_288_trades_or_less": 0.55, "params": {}}
+                ]
+            }
+        }
+        sys.stdout.write(json.dumps(out, ensure_ascii=False, separators=(",", ":"), default=str))
+        return
+
+    payload = unwrap_result(obj)
+    market = payload.get("market", {}) if isinstance(payload, dict) else {}
+    summary_rows = payload.get("backtest_summary", []) if isinstance(payload, dict) else []
+    if not isinstance(summary_rows, list):
+        summary_rows = []
+
+    table, norm_rows = make_table(summary_rows)
+    best, reason = pick_best(norm_rows, min_trades=30)
+    signal = derive_signal(payload if isinstance(payload, dict) else {}, best if isinstance(best, dict) else {})
+    notes = best_strategy_notes(best, reason)
+    plot_info = plot_outputs(market if isinstance(market, dict) else {}, norm_rows, out_dir="plots")
+
+    printable_table = table.to_string(index=False)
+
+    bullets = []
+    bullets.append(f"- Market: {market.get('url') if isinstance(market, dict) else ''}".strip())
+    if isinstance(market, dict) and market.get("symbol"):
+        bullets.append(f"- Symbol: {market.get('symbol')}  Interval: {market.get('interval')}")
+    if isinstance(market, dict) and market.get("data_start_utc") and market.get("data_end_utc"):
+        bullets.append(f"- Data window: {market.get('data_start_utc')} -> {market.get('data_end_utc')}")
+    if isinstance(market, dict) and market.get("bars") is not None:
+        bullets.append(f"- Bars: {market.get('bars')}")
+    if isinstance(best, dict):
+        bullets.append(f"- Best strategy: {best.get('strategy')}")
+    bullets.append(f"- Signal: {signal.get('signal')}  Side: {signal.get('side')}  Confidence: {signal.get('confidence') if signal.get('confidence') is not None else 'null'}")
+
+    report = {
+        "timestamp_utc": now_utc_iso(),
+        "market": market,
+        "backtest_table": printable_table,
+        "best_strategy": best,
+        "best_strategy_notes": notes,
+        "actionable_signals": signal,
+        "plots": plot_info.get("plots", []),
+        "plots_dir": plot_info.get("out_dir", "plots"),
+        "digest_summary_bullets": bullets
+    }
+
+    sys.stdout.write(json.dumps(report, ensure_ascii=False, separators=(",", ":"), default=str))
+
+if __name__ == "__main__":
+    main()
+
+[2026-02-25 18:58:32.822771]
+TASK:
+You are a trading assistant. I will provide you a JSON object containing backtest results for a market (5-min bars). Your task:
+CODE:
+
+
+[2026-02-25 18:58:32.836847]
+
+
+[2026-02-25 18:58:33.008560]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:33.038723]
+
+
+[2026-02-25 18:58:33.101874]
+TASK:
+1. Summarize the backtest results in a **clear table**, showing:
+CODE:
+
+
+[2026-02-25 18:58:33.117054]
+
+
+[2026-02-25 18:58:33.194141]
+TASK:
+   - Strategy name
+CODE:
+
+
+[2026-02-25 18:58:33.211792]
+
+
+[2026-02-25 18:58:33.301881]
+TASK:
+   - Win rate
+CODE:
+
+
+[2026-02-25 18:58:33.321626]
+
+
+[2026-02-25 18:58:33.387134]
+TASK:
+   - Average return per trade
+CODE:
+
+
+[2026-02-25 18:58:33.402772]
+
+
+[2026-02-25 18:58:33.488286]
+TASK:
+   - Total compounded return
+CODE:
+
+
+[2026-02-25 18:58:33.504488]
+
+
+[2026-02-25 18:58:33.574922]
+TASK:
+   - Sharpe ratio
+CODE:
+
+
+[2026-02-25 18:58:33.591706]
+
+
+[2026-02-25 18:58:34.358941]
+TASK:
+   - Max drawdown
+CODE:
+
+
+[2026-02-25 18:58:34.374024]
+
+
+[2026-02-25 18:58:34.463340]
+TASK:
+   - Recent win rate
+CODE:
+
+
+[2026-02-25 18:58:34.478178]
+
+
+[2026-02-25 18:58:34.555083]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:34.569600]
+
+
+[2026-02-25 18:58:34.624721]
+TASK:
+2. Highlight the **best strategy**, including why it is the best and any caveats.
+CODE:
+
+
+[2026-02-25 18:58:34.639331]
+
+
+[2026-02-25 18:58:34.721838]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:34.740802]
+
+
+[2026-02-25 18:58:34.847409]
+TASK:
+3. Generate **actionable signals** summary, e.g., whether the JSON suggests going UP or DOWN, with confidence.
+CODE:
+
+
+[2026-02-25 18:58:34.866582]
+
+
+[2026-02-25 18:58:34.944223]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:34.962549]
+
+
+[2026-02-25 18:58:35.029219]
+TASK:
+4. Provide **visual plots**:
+CODE:
+
+
+[2026-02-25 18:58:35.049765]
+
+
+[2026-02-25 18:58:35.145577]
+TASK:
+   - Line chart of **cumulative returns** per strategy.
+CODE:
+
+
+[2026-02-25 18:58:35.159710]
+
+
+[2026-02-25 18:58:35.216658]
+TASK:
+   - Bar chart of **win rates** per strategy.
+CODE:
+
+
+[2026-02-25 18:58:35.231002]
+
+
+[2026-02-25 18:58:35.317520]
+TASK:
+   - Highlight recent performance trends.
+CODE:
+
+
+[2026-02-25 18:58:35.339183]
+
+
+[2026-02-25 18:58:35.413906]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:35.428924]
+
+
+[2026-02-25 18:58:35.528525]
+TASK:
+5. Make it **easy to digest**, include a short textual summary with bullet points.
+CODE:
+
+
+[2026-02-25 18:58:35.544612]
+
+
+[2026-02-25 18:58:36.117940]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:36.142626]
+
+
+[2026-02-25 18:58:36.272495]
+TASK:
+Here is the JSON:
+CODE:
+
+
+[2026-02-25 18:58:36.287812]
+
+
+[2026-02-25 18:58:36.366276]
+TASK:
+
+CODE:
+
+
+[2026-02-25 18:58:36.386174]
+
+
+[2026-02-25 18:58:36.478391]
+TASK:
+{
+CODE:
+
+
+[2026-02-25 18:58:36.494326]
+
+
+[2026-02-25 18:58:36.561942]
+TASK:
+  "market": {
+CODE:
+
+
+[2026-02-25 18:58:36.577053]
+
+
+[2026-02-25 18:58:36.664201]
+TASK:
+    "url": "https://polymarket.com/event/sol-updown-5m-1772027100",
+CODE:
+
+
+[2026-02-25 18:58:36.681484]
+
+
+[2026-02-25 18:58:36.750566]
+TASK:
+    "underlying_proxy": "binance_spot",
+CODE:
+
+
+[2026-02-25 18:58:36.766729]
+
+
+[2026-02-25 18:58:36.961486]
+TASK:
+    "symbol": "SOLUSDT",
+CODE:
+
+
+[2026-02-25 18:58:36.986650]
+
+
+[2026-02-25 18:58:37.059451]
+TASK:
+    "interval": "5m",
+CODE:
+
+
+[2026-02-25 18:58:37.080671]
+
+
+[2026-02-25 18:58:37.149754]
+TASK:
+    "data_start_utc": "2026-02-15T08:40:00+00:00",
+CODE:
+
+
+[2026-02-25 18:58:37.167472]
+
+
+[2026-02-25 18:58:37.247330]
+TASK:
+    "data_end_utc": "2026-02-25T18:39:59.999000+00:00",
+CODE:
+
+
+[2026-02-25 18:58:37.264375]
+
+
+[2026-02-25 18:58:37.324172]
+TASK:
+    "bars": 3000
+CODE:
+
+
+[2026-02-25 18:58:37.345647]
+
+
+[2026-02-25 18:58:37.431808]
+TASK:
+  },
+CODE:
+
+
+[2026-02-25 18:58:37.445964]
+
+
+[2026-02-25 18:58:37.529535]
+TASK:
+  "backtest_summary": [
+CODE:
+
+
+[2026-02-25 18:58:37.566229]
+
+
+[2026-02-25 18:58:37.647126]
+TASK:
+    {
+CODE:
+
+
+[2026-02-25 18:58:37.661284]
+
+
+[2026-02-25 18:58:37.730860]
+TASK:
+      "strategy": "momentum",
+CODE:
+
+
+[2026-02-25 18:58:37.748910]
+
+
+[2026-02-25 18:58:37.818565]
+TASK:
+      "params": {"lookback_bars": 3, "min_abs_move": 0.0},
+CODE:
+
+
+[2026-02-25 18:58:37.836128]
+
+
+[2026-02-25 18:58:37.959278]
+TASK:
+      "bars": 3000,
+CODE:
+
+
+[2026-02-25 18:58:37.973329]
+
+
+[2026-02-25 18:58:38.039391]
+TASK:
+      "trades": 2941,
+CODE:
+
+
+[2026-02-25 18:58:38.053516]
+
+
+[2026-02-25 18:58:38.117588]
+TASK:
+      "wins": 1345,
+CODE:
+
+
+[2026-02-25 18:58:38.131672]
+
+
+[2026-02-25 18:58:38.208345]
+TASK:
+      "losses": 1478,
+CODE:
+
+
+[2026-02-25 18:58:38.225473]
+
+
+[2026-02-25 18:58:38.287407]
+TASK:
+      "ties": 118,
+CODE:
+
+
+[2026-02-25 18:58:38.307152]
+
+
+[2026-02-25 18:58:38.382173]
+TASK:
+      "win_rate": 0.4573274396463788,
+CODE:
+
+
+[2026-02-25 18:58:38.401272]
+
+
+[2026-02-25 18:58:38.459946]
+TASK:
+      "avg_return_per_trade": -6.890050142515447e-05,
+CODE:
+
+
+[2026-02-25 18:58:38.474777]
+
+
+[2026-02-25 18:58:38.527263]
+TASK:
+      "median_return_per_trade": -0.00011591515011000197,
+CODE:
+
+
+[2026-02-25 18:58:38.542211]
+
+
+[2026-02-25 18:58:38.645163]
+TASK:
+      "total_return_compounded": -0.18952577318905073,
+CODE:
+
+
+[2026-02-25 18:58:38.674551]
+
+
+[2026-02-25 18:58:38.768718]
+TASK:
+      "max_drawdown": -0.21969933879533698,
+CODE:
+
+
+[2026-02-25 18:58:38.793928]
+
+
+[2026-02-25 18:58:38.846096]
+TASK:
+      "sharpe_annualized_5m": -9.794806363068064,
+CODE:
+
+
+[2026-02-25 18:58:38.860334]
+
+
+[2026-02-25 18:58:38.931793]
+TASK:
+      "recent_win_rate_last_288_trades_or_less": 0.4791666666666667
+CODE:
+
+
+[2026-02-25 18:58:38.950184]
+
+
+[2026-02-25 19:00:09.079563]
+TASK:
+You are a trading assistant. I will provide you a JSON object containing backtest results for a market (5-min bars). Your task:
+CODE:
+
+
+[2026-02-25 19:00:09.093949]
+
+
+[2026-02-25 19:00:09.285337]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:09.300168]
+
+
+[2026-02-25 19:00:09.356542]
+TASK:
+1. Summarize the backtest results in a **clear table**, showing:
+CODE:
+
+
+[2026-02-25 19:00:09.370529]
+
+
+[2026-02-25 19:00:09.471650]
+TASK:
+   - Strategy name
+CODE:
+
+
+[2026-02-25 19:00:09.487654]
+
+
+[2026-02-25 19:00:09.595901]
+TASK:
+   - Win rate
+CODE:
+
+
+[2026-02-25 19:00:09.611249]
+
+
+[2026-02-25 19:00:09.701257]
+TASK:
+   - Average return per trade
+CODE:
+
+
+[2026-02-25 19:00:09.736339]
+
+
+[2026-02-25 19:00:09.832151]
+TASK:
+   - Total compounded return
+CODE:
+
+
+[2026-02-25 19:00:09.848178]
+
+
+[2026-02-25 19:00:09.913174]
+TASK:
+   - Sharpe ratio
+CODE:
+
+
+[2026-02-25 19:00:09.928242]
+
+
+[2026-02-25 19:00:10.028107]
+TASK:
+   - Max drawdown
+CODE:
+
+
+[2026-02-25 19:00:10.044709]
+
+
+[2026-02-25 19:00:10.126430]
+TASK:
+   - Recent win rate
+CODE:
+
+
+[2026-02-25 19:00:10.142388]
+
+
+[2026-02-25 19:00:10.205371]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:10.223854]
+
+
+[2026-02-25 19:00:10.323923]
+TASK:
+2. Highlight the **best strategy**, including why it is the best and any caveats.
+CODE:
+
+
+[2026-02-25 19:00:10.338082]
+
+
+[2026-02-25 19:00:10.413131]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:10.427118]
+
+
+[2026-02-25 19:00:10.492100]
+TASK:
+3. Generate **actionable signals** summary, e.g., whether the JSON suggests going UP or DOWN, with confidence.
+CODE:
+
+
+[2026-02-25 19:00:10.510522]
+
+
+[2026-02-25 19:00:10.594312]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:10.612108]
+
+
+[2026-02-25 19:00:10.673281]
+TASK:
+4. Provide **visual plots**:
+CODE:
+
+
+[2026-02-25 19:00:10.687506]
+
+
+[2026-02-25 19:00:10.767741]
+TASK:
+   - Line chart of **cumulative returns** per strategy.
+CODE:
+
+
+[2026-02-25 19:00:10.781901]
+
+
+[2026-02-25 19:00:10.870721]
+TASK:
+   - Bar chart of **win rates** per strategy.
+CODE:
+
+
+[2026-02-25 19:00:10.886368]
+
+
+[2026-02-25 19:00:10.991937]
+TASK:
+   - Highlight recent performance trends.
+CODE:
+
+
+[2026-02-25 19:00:11.009528]
+
+
+[2026-02-25 19:00:11.100172]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:11.119656]
+
+
+[2026-02-25 19:00:11.222951]
+TASK:
+5. Make it **easy to digest**, include a short textual summary with bullet points.
+CODE:
+
+
+[2026-02-25 19:00:11.237360]
+
+
+[2026-02-25 19:00:11.296851]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:11.321026]
+
+
+[2026-02-25 19:00:11.394715]
+TASK:
+Here is the JSON:
+CODE:
+
+
+[2026-02-25 19:00:11.413066]
+
+
+[2026-02-25 19:00:11.506538]
+TASK:
+
+CODE:
+
+
+[2026-02-25 19:00:11.522896]
+
+
+[2026-02-25 19:00:11.622779]
+TASK:
+{
+CODE:
+
+
+[2026-02-25 19:00:11.636930]
+
+
+[2026-02-25 19:00:11.709133]
+TASK:
+  "market": {
+CODE:
+
+
+[2026-02-25 19:00:11.724569]
+
+
+[2026-02-25 19:00:11.806973]
+TASK:
+    "url": "https://polymarket.com/event/sol-updown-5m-1772027100",
+CODE:
+
+
+[2026-02-25 19:00:11.832609]
+
+
+[2026-02-25 19:00:11.897501]
+TASK:
+    "underlying_proxy": "binance_spot",
+CODE:
+
+
+[2026-02-25 19:00:11.911699]
+
+
+[2026-02-25 19:00:11.977531]
+TASK:
+    "symbol": "SOLUSDT",
+CODE:
+
+
+[2026-02-25 19:00:11.991885]
+
+
+[2026-02-25 19:00:12.066653]
+TASK:
+    "interval": "5m",
+CODE:
+
+
+[2026-02-25 19:00:12.084049]
+
+
+[2026-02-25 19:00:12.156880]
+TASK:
+    "data_start_utc": "2026-02-15T08:40:00+00:00",
+CODE:
+
+
+[2026-02-25 19:00:12.179559]
+
+
+[2026-02-25 19:00:12.253543]
+TASK:
+    "data_end_utc": "2026-02-25T18:39:59.999000+00:00",
+CODE:
+
+
+[2026-02-25 19:00:12.267613]
+
+
+[2026-02-25 19:00:12.330156]
+TASK:
+    "bars": 3000
+CODE:
+
+
+[2026-02-25 19:00:12.357214]
+
+
+[2026-02-25 19:00:12.446071]
+TASK:
+  },
+CODE:
+
+
+[2026-02-25 19:00:12.464024]
+
+
+[2026-02-25 19:00:12.552060]
+TASK:
+  "backtest_summary": [
+CODE:
+
+
+[2026-02-25 19:00:12.570883]
+
+
+[2026-02-25 19:00:12.637629]
+TASK:
+    {
+CODE:
+
+
+[2026-02-25 19:00:12.651702]
+
+
+[2026-02-25 19:00:12.729555]
+TASK:
+      "strategy": "momentum",
+CODE:
+
+
+[2026-02-25 19:00:12.747130]
+
+
+[2026-02-25 19:00:12.836836]
+TASK:
+      "params": {"lookback_bars": 3, "min_abs_move": 0.0},
+CODE:
+
+
+[2026-02-25 19:00:12.853961]
+
+
+[2026-02-25 19:00:12.945405]
+TASK:
+      "bars": 3000,
+CODE:
+
+
+[2026-02-25 19:00:12.966846]
+
+
+[2026-02-25 19:00:13.047766]
+TASK:
+      "trades": 2941,
+CODE:
+
+
+[2026-02-25 19:00:13.065846]
+
+
+[2026-02-25 19:00:13.155696]
+TASK:
+      "wins": 1345,
+CODE:
+
+
+[2026-02-25 19:00:13.174479]
+
+
+[2026-02-25 19:00:13.274422]
+TASK:
+      "losses": 1478,
+CODE:
+
+
+[2026-02-25 19:00:13.291149]
+
+
+[2026-02-25 19:00:13.362138]
+TASK:
+      "ties": 118,
+CODE:
+
+
+[2026-02-25 19:00:13.377641]
+
+
+[2026-02-25 19:00:13.452854]
+TASK:
+      "win_rate": 0.4573274396463788,
+CODE:
+
+
+[2026-02-25 19:00:13.470665]
+
+
+[2026-02-25 19:00:13.551367]
+TASK:
+      "avg_return_per_trade": -6.890050142515447e-05,
+CODE:
+
+
+[2026-02-25 19:00:13.565977]
+
+
+[2026-02-25 19:00:13.645103]
+TASK:
+      "median_return_per_trade": -0.00011591515011000197,
+CODE:
+
+
+[2026-02-25 19:00:13.660519]
+
+
+[2026-02-25 19:00:13.755142]
+TASK:
+      "total_return_compounded": -0.18952577318905073,
+CODE:
+
+
+[2026-02-25 19:00:13.770133]
+
+
+[2026-02-25 19:00:13.854940]
+TASK:
+      "max_drawdown": -0.21969933879533698,
+CODE:
+
+
+[2026-02-25 19:00:13.890279]
+
+
+[2026-02-25 19:00:13.972833]
+TASK:
+      "sharpe_annualized_5m": -9.794806363068064,
+CODE:
+
+
+[2026-02-25 19:00:13.991067]
+
+
+[2026-02-25 19:00:14.058492]
+TASK:
+      "recent_win_rate_last_288_trades_or_less": 0.4791666666666667
+CODE:
+
+
+[2026-02-25 19:00:14.076440]
+
+
+[2026-02-25 19:00:14.135804]
+TASK:
+    },
+CODE:
+
+
+[2026-02-25 19:00:14.153065]
+
+
+[2026-02-25 19:00:14.245727]
+TASK:
+    {
+CODE:
+
+
+[2026-02-25 19:00:14.261183]
+
+
+[2026-02-25 19:00:14.349609]
+TASK:
+      "strategy": "ma_cross",
+CODE:
+
+
+[2026-02-25 19:00:14.364525]
+
+
+[2026-02-25 19:00:14.432287]
+TASK:
+      "params": {"fast": 8, "slow": 21, "band": 0.0008},
+CODE:
+
+
+[2026-02-25 19:00:14.447178]
+
+
+[2026-02-25 19:00:14.525979]
+TASK:
+      "bars": 3000,
+CODE:
+
+
+[2026-02-25 19:00:14.546799]
+
+
+[2026-02-25 19:00:14.598584]
+TASK:
+      "trades": 2325,
+CODE:
+
+
+[2026-02-25 19:00:14.614699]
+
+
+[2026-02-25 19:00:14.677630]
+TASK:
+      "wins": 1100,
+CODE:
+
+
+[2026-02-25 19:00:14.694789]
+
+
+[2026-02-25 19:00:14.786477]
+TASK:
+      "losses": 1139,
+CODE:
+
+
+[2026-02-25 19:00:14.803151]
+
+
+[2026-02-25 19:00:14.858768]
+TASK:
+      "ties": 86,
+CODE:
+
+
+[2026-02-25 19:00:14.874155]
+
+
+[2026-02-25 19:00:14.977558]
+TASK:
+      "win_rate": 0.4731182795698925,
+CODE:
+
+
+[2026-02-25 19:00:14.993414]
+
+
+[2026-02-25 19:00:15.094879]
+TASK:
+      "avg_return_per_trade": -4.6834532811124606e-05,
+CODE:
+
+
+[2026-02-25 19:00:15.109780]
+
+
+[2026-02-25 19:00:15.170696]
+TASK:
+      "median_return_per_trade": 0.0,
+CODE:
+
+
+[2026-02-25 19:00:15.189569]
+
+
+[2026-02-25 19:00:15.275677]
+TASK:
+      "total_return_compounded": -0.10869693930504387,
+CODE:
+
+
+[2026-02-25 19:00:15.329083]
+
+
+[2026-02-25 19:00:15.406026]
+TASK:
+      "max_drawdown": -0.1832928431769254,
+CODE:
+
+
+[2026-02-25 19:00:15.420546]
+
+
+[2026-02-25 19:00:15.487054]
+TASK:
+      "sharpe_annualized_5m": -5.796181124936278,
+CODE:
+
+
+[2026-02-25 19:00:15.508901]
+
+
+[2026-02-25 19:00:15.595960]
+TASK:
+      "recent_win_rate_last_288_trades_or_less": 0.5138888888888888
+CODE:
+
+
+[2026-02-25 19:00:15.610036]
+
+
+[2026-02-25 19:00:15.663336]
+TASK:
+    },
+CODE:
+
+
+[2026-02-25 19:00:15.680083]
+
+
+[2026-02-25 19:00:15.752139]
+TASK:
+    {
+CODE:
+
+
+[2026-02-25 19:00:15.770254]
+
+
+[2026-02-25 19:00:15.866667]
+TASK:
+      "strategy": "vol_breakout",
+CODE:
+
+
+[2026-02-25 19:00:15.881265]
+
+
+[2026-02-25 19:00:15.981587]
+TASK:
+      "params": {"vol_window": 36, "z": 1.25},
+CODE:
+
+
+[2026-02-25 19:00:16.002796]
+
+
+[2026-02-25 19:00:16.058478]
+TASK:
+      "bars": 3000,
+CODE:
+
+
+[2026-02-25 19:00:16.074298]
+
+
+[2026-02-25 19:00:16.138836]
+TASK:
+      "trades": 523,
+CODE:
+
+
+[2026-02-25 19:00:16.153396]
+
+
+[2026-02-25 19:00:16.210601]
+TASK:
+      "wins": 217,
+CODE:
+
+
+[2026-02-25 19:00:16.226463]
+
+
+[2026-02-25 19:00:16.302729]
+TASK:
+      "losses": 286,
+CODE:
+
+
+[2026-02-25 19:00:16.320181]
+
+
+[2026-02-25 19:00:16.379657]
+TASK:
+      "ties": 20,
+CODE:
+
+
+[2026-02-25 19:00:16.395483]
+
+
+[2026-02-25 19:00:16.445402]
+TASK:
+      "win_rate": 0.4149139579349904,
+CODE:
+
+
+[2026-02-25 19:00:16.461098]
+
+
+[2026-02-25 19:00:16.521537]
+TASK:
+      "avg_return_per_trade": -0.00016879338666272743,
+CODE:
+
+
+[2026-02-25 19:00:16.537542]
+
+
+[2026-02-25 19:00:16.596273]
+TASK:
+      "median_return_per_trade": -0.0002348244687095935,
+CODE:
+
+
+[2026-02-25 19:00:16.610469]
+
+
+[2026-02-25 19:00:16.665227]
+TASK:
+      "total_return_compounded": -0.08615444965222474,
+CODE:
+
+
+[2026-02-25 19:00:16.680029]
+
+
+[2026-02-25 19:00:16.734577]
+TASK:
+      "max_drawdown": -0.1281688151152337,
+CODE:
+
+
+[2026-02-25 19:00:16.751752]
+
+
+[2026-02-25 19:00:16.846191]
+TASK:
+      "sharpe_annualized_5m": -8.674233941935942,
+CODE:
+
+
+[2026-02-25 19:00:16.860628]
+
+
+[2026-02-25 19:00:16.932180]
+TASK:
+      "recent_win_rate_last_288_trades_or_less": 0.4513888888888889
+CODE:
+
+
+[2026-02-25 19:00:16.946756]
+
+
+[2026-02-25 19:00:17.012535]
+TASK:
+    }
+CODE:
+
+
+[2026-02-25 19:00:17.026868]
+
+
+[2026-02-25 19:00:17.088403]
+TASK:
+  ],
+CODE:
+
+
+[2026-02-25 19:00:17.102650]
+
+
+[2026-02-25 19:00:17.154445]
+TASK:
+  "best_strategy": {
+CODE:
+
+
+[2026-02-25 19:00:17.170188]
+
+
+[2026-02-25 19:00:17.222750]
+TASK:
+    "strategy": "ma_cross",
+CODE:
+
+
+[2026-02-25 19:00:17.238774]
+
+
+[2026-02-25 19:00:17.296440]
+TASK:
+    "params": {"fast": 8, "slow": 21, "band": 0.0008},
+CODE:
+
+
+[2026-02-25 19:00:17.310751]
+
+
+[2026-02-25 19:00:17.367092]
+TASK:
+    "bars": 3000,
+CODE:
+
+
+[2026-02-25 19:00:17.382820]
+
+
+[2026-02-25 19:00:17.434797]
+TASK:
+    "trades": 2325,
+CODE:
+
+
+[2026-02-25 19:00:17.456637]
+
+
+[2026-02-25 19:00:17.539474]
+TASK:
+    "wins": 1100,
+CODE:
+
+
+[2026-02-25 19:00:17.554218]
+
+
+[2026-02-25 19:00:17.622351]
+TASK:
+    "losses": 1139,
+CODE:
+
+
+[2026-02-25 19:00:17.636735]
+
+
+[2026-02-25 19:00:17.710757]
+TASK:
+    "ties": 86,
+CODE:
+
+
+[2026-02-25 19:00:17.725404]
+
+
+[2026-02-25 19:00:17.806331]
+TASK:
+    "win_rate": 0.4731182795698925,
+CODE:
+
+
+[2026-02-25 19:00:17.820700]
+
+
+[2026-02-25 19:00:17.874690]
+TASK:
+    "avg_return_per_trade": -4.6834532811124606e-05,
+CODE:
+
+
+[2026-02-25 19:00:17.889148]
+
+
+[2026-02-25 19:00:17.986783]
+TASK:
+    "median_return_per_trade": 0.0,
+CODE:
+
+
+[2026-02-25 19:00:18.026151]
+
+
+[2026-02-25 19:00:18.091224]
+TASK:
+    "total_return_compounded": -0.10869693930504387,
+CODE:
+
+
+[2026-02-25 19:00:18.106042]
+
+
+[2026-02-25 19:00:18.161450]
+TASK:
+    "max_drawdown": -0.1832928431769254,
+CODE:
+
+
+[2026-02-25 19:00:18.176084]
+
+
+[2026-02-25 19:00:18.228130]
+TASK:
+    "sharpe_annualized_5m": -5.796181124936278,
+CODE:
+
+
+[2026-02-25 19:00:18.242819]
+
+
+[2026-02-25 19:00:18.309839]
+TASK:
+    "recent_win_rate_last_288_trades_or_less": 0.5138888888888888
+CODE:
+
+
+[2026-02-25 19:00:18.325429]
+
+
+[2026-02-25 19:00:18.378768]
+TASK:
+  },
+CODE:
+
+
+[2026-02-25 19:00:18.401409]
+
+
+[2026-02-25 19:00:18.482947]
+TASK:
+  "actionable_signals": {
+CODE:
+
+
+[2026-02-25 19:00:18.505176]
+
+
+[2026-02-25 19:00:18.577196]
+TASK:
+    "signal": "YES",
+CODE:
+
+
+[2026-02-25 19:00:18.592587]
+
+
+[2026-02-25 19:00:18.655092]
+TASK:
+    "side": "UP",
+CODE:
+
+
+[2026-02-25 19:00:18.669806]
+
+
+[2026-02-25 19:00:18.730343]
+TASK:
+    "confidence": 0.5176470588235295,
+CODE:
+
+
+[2026-02-25 19:00:18.745885]
+
+
+[2026-02-25 19:00:18.837312]
+TASK:
+    "timestamp_utc": "2026-02-25T18:39:59.999000+00:00",
+CODE:
+
+
+[2026-02-25 19:00:18.851496]
+
+
+[2026-02-25 19:00:18.927371]
+TASK:
+    "last_close": 88.95,
+CODE:
+
+
+[2026-02-25 19:00:18.950313]
+
+
+[2026-02-25 19:00:19.010737]
+TASK:
+    "basis": {
+CODE:
+
+
+[2026-02-25 19:00:19.025288]
+
+
+[2026-02-25 19:00:19.093257]
+TASK:
+      "best_strategy": "ma_cross",
+CODE:
+
+
+[2026-02-25 19:00:19.107530]
+
+
+[2026-02-25 19:00:19.159688]
+TASK:
+      "best_strategy_sharpe_annualized_5m": -5.796181124936278,
+CODE:
+
+
+[2026-02-25 19:00:19.174296]
+
+
+[2026-02-25 19:00:19.228464]
+TASK:
+      "best_strategy_recent_win_rate": 0.5138888888888888,
+CODE:
+
+
+[2026-02-25 19:00:19.243211]
+
+
+[2026-02-25 19:00:19.328566]
+TASK:
+      "best_strategy_trades": 2325
+CODE:
+
+
+[2026-02-25 19:00:19.343418]
+
+
+[2026-02-25 19:00:19.401510]
+TASK:
+    }
+CODE:
+
+
+[2026-02-25 19:00:19.416050]
+
+
+[2026-02-25 19:00:19.494347]
+TASK:
+  },
+CODE:
+
+
+[2026-02-25 19:00:19.508699]
+
+
+[2026-02-25 19:00:19.563341]
+TASK:
+  "errors": []
+CODE:
+
+
+[2026-02-25 19:00:19.578065]
+
+
+[2026-02-25 19:01:34.934176]
+TASK:
+simple hellow world
+CODE:
+print("Hello World")
+
+[2026-02-25 19:01:34.949305]
+Hello World
+
+
+[2026-02-25 19:02:03.139563]
+TASK:
+You are a trading assistant. I will provide you a JSON object containing backtest results for a market (5-min bars). Your task:
+CODE:
+import subprocess, sys
+
+def install(package):
+    try:
+        __import__(package)
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--quiet"])
+
+install("pandas")
+install("numpy") 
+install("matplotlib")
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+def analyze_backtest_results(json_data):
+    # Create summary table
+    summary = pd.DataFrame(json_data["backtest_summary"])
+    summary = summary[["strategy", "win_rate", "avg_return_per_trade", 
+                      "total_return_compounded", "sharpe_annualized_5m",
+                      "max_drawdown", "recent_win_rate_last_288_trades_or_less"]]
+    
+    # Plot win rates
+    plt.figure(figsize=(10,6))
+    plt.bar(summary["strategy"], summary["win_rate"])
+    plt.title("Win Rates by Strategy")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("win_rates.png")
+    
+    # Plot cumulative returns
+    plt.figure(figsize=(10,6))
+    plt.bar(summary["strategy"], summary["total_return_compounded"])
+    plt.title("Total Returns by Strategy") 
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("returns.png")
+    
+    # Get best strategy
+    best = json_data["best_strategy"]
+    
+    # Get actionable signal
+    signal = json_data["actionable_signals"]
+    
+    return {
+        "summary": summary.to_dict("records"),
+        "best_strategy": {
+            "name": best["strategy"],
+            "win_rate": best["win_rate"],
+            "sharpe": best["sharpe_annualized_5m"]
+        },
+        "signal": {
+            "direction": signal["side"],
+            "confidence": signal["confidence"]
+        }
+    }
+
+if __name__ == "__main__":
+    # Read JSON from stdin
+    import json
+    json_data = json.load(sys.stdin)
+    results = analyze_backtest_results(json_data)
+    print(json.dumps(results, indent=2))
